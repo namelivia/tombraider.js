@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Tomb Raider</title>
+	<script src="js/three.min.js"></script>
+	<script src="js/jquery-2.0.3.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body onkeyup="GetChar(event)">
+	<div id="fadein"></div>
+	<span id="title">3D Tomb Raider menu test for websites</span>
+	<span id="option">Use left and right keys to navigate</span>
+	
+	<script type="text/javascript">
+	var camera, scene, renderer, keyboard;
+	var geometry = new Array();
+	var material = new Array();
+	var mesh = new Array();
+	var maxObjects = 8;
+	var selected = maxObjects/4;
+	var angleStep = (360/maxObjects) * (Math.PI / 180);
+	var radius = 600;
+	var size = 100;
+
+	init();
+	animate();
+
+	function init() {
+		$(window).load(function(){ 
+			$('#fadein').fadeOut(3000,function(){$(this).remove();});
+		});
+
+		camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+		scene = new THREE.Scene();
+		camera.position.y = 100;
+
+		var objectsIndex = maxObjects;
+		while (objectsIndex > 0 ){
+			geometry[objectsIndex] = new THREE.CubeGeometry( size, size, size );
+			material[objectsIndex] = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
+			mesh[objectsIndex] = new THREE.Mesh( geometry[objectsIndex], material[objectsIndex] );
+			mesh[objectsIndex].position.x=Math.cos(angleStep*objectsIndex)*radius;
+			mesh[objectsIndex].position.z=Math.sin(angleStep*objectsIndex)*radius;
+			scene.add(mesh[objectsIndex]);
+			objectsIndex--;
+		}
+
+		renderer = new THREE.CanvasRenderer();
+		renderer.setSize( window.innerWidth-25, window.innerHeight-25);
+
+		document.body.appendChild( renderer.domElement );
+
+	}
+
+	function animate() {
+
+		requestAnimationFrame( animate );
+
+		mesh[selected].rotation.y += 0.01;
+		camera.position.x=Math.cos(angleStep*selected)*radius*2;
+		camera.position.z=Math.sin(angleStep*selected)*radius*2;
+		camera.lookAt(new THREE.Vector3(0,0,0));
+		renderer.render( scene, camera );
+
+	}
+
+	function GetChar (event){
+		var keyCode = ('which' in event) ? event.which : event.keyCode;
+		if (keyCode==37){
+			selected++;
+		}
+		else if (keyCode==39){
+			selected --;
+		}
+		if (selected > maxObjects) selected = 1;
+		if (selected < 1) selected = maxObjects;
+		$('#option').text('Option '+selected);
+	}
+	</script>
+</body>
+</html>
