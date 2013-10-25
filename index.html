@@ -5,6 +5,8 @@
 	<title>Tomb Raider</title>
 	<script src="js/three.min.js"></script>
 	<script src="js/jquery-2.0.3.min.js"></script>
+	<script src="js/jquery.event.move.js"></script>
+	<script src="js/jquery.event.swipe.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body onkeyup="GetChar(event)">
@@ -20,15 +22,35 @@
 	var maxObjects = 8;
 	var selected = maxObjects/4;
 	var angleStep = (360/maxObjects) * (Math.PI / 180);
+	var cameraAngle;
 	var radius = 600;
+	var cameraDistance = 1200;
 	var size = 100;
 
 	init();
 	animate();
 
 	function init() {
+
 		$(window).load(function(){ 
 			$('#fadein').fadeOut(3000,function(){$(this).remove();});
+		});
+
+		$(document).ready(function() {
+				$("body").on('swipeleft', function(e) {
+					selected--;
+                			if (selected < 1) selected = maxObjects;
+                			$('#option').text('Option '+selected);
+
+				})
+
+				$("body").on('swiperight', function(e) {
+					selected++;
+					if (selected > maxObjects) selected = 1;
+                			$('#option').text('Option '+selected);
+
+				})
+
 		});
 
 		camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
@@ -45,7 +67,8 @@
 			scene.add(mesh[objectsIndex]);
 			objectsIndex--;
 		}
-
+	
+		cameraAngle = angleStep*selected;
 		renderer = new THREE.CanvasRenderer();
 		renderer.setSize( window.innerWidth-25, window.innerHeight-25);
 
@@ -58,8 +81,14 @@
 		requestAnimationFrame( animate );
 
 		mesh[selected].rotation.y += 0.01;
-		camera.position.x=Math.cos(angleStep*selected)*radius*2;
-		camera.position.z=Math.sin(angleStep*selected)*radius*2;
+		if (cameraAngle != angleStep*selected){
+			if (cameraAngle < angleStep*selected){
+				cameraAngle = cameraAngle+(angleStep*selected-cameraAngle)/10;
+			}
+			else cameraAngle = cameraAngle-(cameraAngle-angleStep*selected)/10;
+		}
+		camera.position.x=Math.cos(cameraAngle)*cameraDistance;
+		camera.position.z=Math.sin(cameraAngle)*cameraDistance;
 		camera.lookAt(new THREE.Vector3(0,0,0));
 		renderer.render( scene, camera );
 
