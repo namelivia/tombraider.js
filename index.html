@@ -5,6 +5,8 @@
 	<title>Tomb Raider</title>
 	<script src="js/three.min.js"></script>
 	<script src="js/jquery-2.0.3.min.js"></script>
+	<script src="js/loaders/MTLLoader.js"></script>
+	<script src="js/loaders/OBJMTLLoader.js"></script>
 	<script src="js/jquery.event.move.js"></script>
 	<script src="js/jquery.event.swipe.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -16,16 +18,19 @@
 	
 	<script type="text/javascript">
 	var camera, scene, renderer, keyboard;
-	var geometry = new Array();
-	var material = new Array();
-	var mesh = new Array();
-	var maxObjects = 8;
-	var selected = maxObjects/4;
-	var angleStep = (360/maxObjects) * (Math.PI / 180);
+        var models =
+['obj/bowser/bowser.obj','obj/mario/mario.obj','obj/yoshi/Yoshi.obj','obj/donkeykong/donkey kong.obj'];
+        var materials =
+['obj/bowser/bowser.mtl','obj/mario/mario.mtl','obj/yoshi/Yoshi.mtl','obj/donkeykong/donkey kong.mtl'];
+	var names = ['Bowser','Mario','Yoshi','Donkey Kong'];
+	var objects = new Array(models.length);
+	var selected = 2;
+	var angleStep = (360/(models.length)) * (Math.PI / 180);
 	var cameraAngle;
 	var radius = 600;
 	var cameraDistance = 1200;
 	var size = 100;
+	var loader = new THREE.OBJMTLLoader();
 
 	init();
 	animate();
@@ -39,16 +44,10 @@
 		$(document).ready(function() {
 				$("body").on('swipeleft', function(e) {
 					selected--;
-                			if (selected < 1) selected = maxObjects;
-                			$('#option').text('Option '+selected);
-
 				})
 
 				$("body").on('swiperight', function(e) {
 					selected++;
-					if (selected > maxObjects) selected = 1;
-                			$('#option').text('Option '+selected);
-
 				})
 
 		});
@@ -57,17 +56,18 @@
 		scene = new THREE.Scene();
 		camera.position.y = 100;
 
-		var objectsIndex = maxObjects;
-		while (objectsIndex > 0 ){
-			geometry[objectsIndex] = new THREE.CubeGeometry( size, size, size );
-			material[objectsIndex] = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
-			mesh[objectsIndex] = new THREE.Mesh( geometry[objectsIndex], material[objectsIndex] );
-			mesh[objectsIndex].position.x=Math.cos(angleStep*objectsIndex)*radius;
-			mesh[objectsIndex].position.z=Math.sin(angleStep*objectsIndex)*radius;
-			scene.add(mesh[objectsIndex]);
+		var objectsIndex = models.length - 1;
+		loadModels(models.length-1);
+		/*while (objectsIndex > -1 ){
+			loader.load(models[objectsIndex],materials[objectsIndex], function ( object) {
+				object.position.x=Math.cos(angleStep*objectsIndex)*radius;
+				object.position.z=Math.sin(angleStep*objectsIndex)*radius;
+				object.scale.set(15,15,15)
+				scene.add(object);
+				objects[objectsIndex] = object;
+			})
 			objectsIndex--;
-		}
-	
+		}*/
 		cameraAngle = angleStep*selected;
 		renderer = new THREE.CanvasRenderer();
 		renderer.setSize( window.innerWidth-25, window.innerHeight-25);
@@ -79,8 +79,7 @@
 	function animate() {
 
 		requestAnimationFrame( animate );
-
-		mesh[selected].rotation.y += 0.01;
+		objects[mod(selected,models.length)].rotation.y += 0.01;
 		if (cameraAngle != angleStep*selected){
 			if (cameraAngle < angleStep*selected){
 				cameraAngle = cameraAngle+(angleStep*selected-cameraAngle)/10;
@@ -94,6 +93,23 @@
 
 	}
 
+	function loadModels(index){
+		if (index > -1){
+			loader.load(models[index],materials[index], function ( object) {
+				object.position.x=Math.cos(angleStep*index)*radius;
+				object.position.z=Math.sin(angleStep*index)*radius;
+				object.scale.set(15,15,15)
+				scene.add(object);
+				objects[index] = object;
+			})
+			loadModels(index-1);
+		}
+	}
+
+	function mod (a,b){
+		return(a%b+b)%b;
+	}
+
 	function GetChar (event){
 		var keyCode = ('which' in event) ? event.which : event.keyCode;
 		if (keyCode==37){
@@ -102,9 +118,7 @@
 		else if (keyCode==39){
 			selected --;
 		}
-		if (selected > maxObjects) selected = 1;
-		if (selected < 1) selected = maxObjects;
-		$('#option').text('Option '+selected);
+		$('#option').text(names[mod(selected,models.length)]);
 	}
 	</script>
 </body>

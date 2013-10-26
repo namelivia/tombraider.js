@@ -1,0 +1,178 @@
+# Blender3D MTL File: mario.blend
+# Material Count: 16
+newmtl Material.156_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.500000 0.500000 0.500000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
+newmtl Material.148_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.396875 0.396875 0.396875
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
+newmtl Material.161_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.396875 0.396875 0.396875
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
+newmtl Material.149_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.396875 0.396875 0.396875
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
+newmtl Material.158_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.396875 0.396875 0.396875
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
+newmtl Material.155_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.396875 0.396875 0.396875
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
+newmtl Material.154_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.696875 0.696875 0.696875
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
+newmtl Material.118_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.634375 0.634375 0.634375
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
+newmtl Material.151_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.400000 0.400000 0.400000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
+newmtl Material.118
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.634375 0.634375 0.634375
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd 230E8E87_c.bmp
+
+
+newmtl Material.160_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.396875 0.396875 0.396875
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
+newmtl Material.153_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.762500 0.762500 0.762500
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
+newmtl Material.159_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.793750 0.793750 0.793750
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
+newmtl Material.152_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.571875 0.571875 0.571875
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
+newmtl Material.157_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.396875 0.396875 0.396875
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
+newmtl Material.150_mario_grp.png
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.396875 0.396875 0.396875
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd mario_grp.png
+
+
