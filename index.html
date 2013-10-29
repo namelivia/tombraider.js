@@ -18,15 +18,13 @@
 	
 	<script type="text/javascript">
 	var camera, scene, renderer, keyboard;
-        var models =
-['obj/bowser/bowser.obj','obj/mario/mario.obj','obj/yoshi/Yoshi.obj','obj/donkeykong/donkey kong.obj'];
-        var materials =
-['obj/bowser/bowser.mtl','obj/mario/mario.mtl','obj/yoshi/Yoshi.mtl','obj/donkeykong/donkey kong.mtl'];
+        var models = ['obj/bowser/bowser.obj','obj/mario/mario.obj','obj/yoshi/Yoshi.obj','obj/donkeykong/donkey kong.obj'];
+        var materials = ['obj/bowser/bowser.mtl','obj/mario/mario.mtl','obj/yoshi/Yoshi.mtl','obj/donkeykong/donkey kong.mtl'];
 	var names = ['Bowser','Mario','Yoshi','Donkey Kong'];
 	var objects = new Array(models.length);
 	var selected = 2;
 	var angleStep = (360/(models.length)) * (Math.PI / 180);
-	var cameraAngle;
+	var cameraAngle = angleStep*selected;
 	var radius = 600;
 	var cameraDistance = 1200;
 	var size = 100;
@@ -58,18 +56,11 @@
 
 		var objectsIndex = models.length - 1;
 		loadModels(models.length-1);
-		/*while (objectsIndex > -1 ){
-			loader.load(models[objectsIndex],materials[objectsIndex], function ( object) {
-				object.position.x=Math.cos(angleStep*objectsIndex)*radius;
-				object.position.z=Math.sin(angleStep*objectsIndex)*radius;
-				object.scale.set(15,15,15)
-				scene.add(object);
-				objects[objectsIndex] = object;
-			})
-			objectsIndex--;
-		}*/
-		cameraAngle = angleStep*selected;
-		renderer = new THREE.CanvasRenderer();
+ 		var directionalLight = new THREE.DirectionalLight(0xffeedd);
+		directionalLight.position.set(0, 70, 100).normalize();
+		scene.add(directionalLight);
+		//renderer = new THREE.CanvasRenderer();
+		renderer = new THREE.WebGLRenderer();
 		renderer.setSize( window.innerWidth-25, window.innerHeight-25);
 
 		document.body.appendChild( renderer.domElement );
@@ -121,5 +112,10 @@
 		$('#option').text(names[mod(selected,models.length)]);
 	}
 	</script>
+	<span id="header">Brought to you by: <a href="http://www.github.com/namelivia">namelivia</a></span>
+	<span id="footer">
+		Supported browsers: <a href="http://chrome.google.com">Google Chrome</a>
+		 | <a href="http://www.firefox.com">Mozilla Firefox</a>
+	         | <a href="http://moreinfo.com">More Info</a></span>
 </body>
 </html>
