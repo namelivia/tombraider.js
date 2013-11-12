@@ -18,9 +18,9 @@
 	
 	<script type="text/javascript">
 	var camera, scene, renderer, keyboard;
-        var models = ['obj/bowser/bowser.obj','obj/mario/mario.obj','obj/yoshi/Yoshi.obj','obj/donkeykong/donkey kong.obj'];
-        var materials = ['obj/bowser/bowser.mtl','obj/mario/mario.mtl','obj/yoshi/Yoshi.mtl','obj/donkeykong/donkey kong.mtl'];
-	var names = ['Bowser','Mario','Yoshi','Donkey Kong'];
+        var models = ['obj/Saturn/Saturn.obj','obj/Megadrive/Megadrive.obj','obj/Mastersystem/Mastersystem.obj','obj/Dreamcast/Dreamcast.obj'];
+        var materials = ['obj/Saturn/Saturn.mtl','obj/Megadrive/Megadrive.mtl','obj/Mastersystem/Mastersystem.mtl','obj/Dreamcast/Dreamcast.mtl'];
+	var names = ['Saturn','Megadrive','Mastersystem','Dreamcast'];
 	var objects = new Array(models.length);
 	var selected = 2;
 	var angleStep = (360/(models.length)) * (Math.PI / 180);
@@ -89,7 +89,7 @@
 			loader.load(models[index],materials[index], function ( object) {
 				object.position.x=Math.cos(angleStep*index)*radius;
 				object.position.z=Math.sin(angleStep*index)*radius;
-				object.scale.set(15,15,15)
+				object.scale.set(50,50,50)
 				scene.add(object);
 				objects[index] = object;
 			})
