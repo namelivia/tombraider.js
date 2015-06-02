@@ -101,7 +101,7 @@ To execute the tests run ```grunt test``` in the root directory, to build it run
 
 ### Changelog ###
 
-*[02-06-2015] 1.0.0: First alpha version, should be tagged as 0.0.1 instead but... anyway.
+*[02-06-2015] 0.0.1: First alpha version.0.1 instead but... anyway.
 
 ### ToDo and ideas ###
 
