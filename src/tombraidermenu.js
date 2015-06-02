@@ -1,6 +1,8 @@
 	var TombRaiderMenu = function(containerId){
 		this.objects = [];
-		if (!window.Detector.webgl) window.Detector.addGetWebGLMessage();
+		if (!window.Detector.webgl) {
+			window.Detector.addGetWebGLMessage();
+		}
 
 		var container = document.getElementById(containerId);
 		var ww = container.offsetWidth;
@@ -98,14 +100,17 @@
 
 	TombRaiderMenu.prototype.update = function (){
 		requestAnimationFrame(TombRaiderMenu.prototype.update.bind(this));
-		var delta = this.clock.getDelta();
+		//TODO: apply delta
+		//var delta = this.clock.getDelta();
 		
 		if (this.cameraAngle !== this.angleStep*this.selectedRotate){
 			if (this.cameraAngle < this.angleStep*this.selectedRotate){
 				this.cameraAngle =
 					this.cameraAngle+(this.angleStep*this.selectedRotate-this.cameraAngle)/10;
 			}
-			else this.cameraAngle = this.cameraAngle-(this.cameraAngle-this.angleStep*this.selectedRotate)/10;
+			else {
+				this.cameraAngle = this.cameraAngle-(this.cameraAngle-this.angleStep*this.selectedRotate)/10;
+			}
 		}
 		this.camera.position.x=Math.cos(this.cameraAngle)*this.cameraDistance;
 		this.camera.position.z=Math.sin(this.cameraAngle)*this.cameraDistance;
@@ -150,7 +155,7 @@
 		try {
 			config = JSON.parse(config);
 		} catch(e){
-			alert("Error parsing the JSON configuration");
+			console.log("Error parsing the JSON configuration");
 		}
 		//TODO: Better to parseInt here or when exporting the json?
 		this.setRadius(parseInt(config.radius));
