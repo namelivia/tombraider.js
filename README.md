@@ -13,13 +13,13 @@ This library depends on three.js you can [get the minified version here](http://
 
 ### Usage ###
 
-Once you have downloaded three.js from the previous link you have to also [get the latest minified version of tombraider.js here](http://tombraiderjs.namelivia.com/tombraider.js-v1.0.0.0.min.js).
+Once you have downloaded three.js from the previous link you have to also [get the latest minified version of tombraider.js here](http://tombraiderjs.namelivia.com/tombraider.js-v0.0.1.min.js).
 
 After doing that you can include three.js and then tombraider.js in your webpage.
 
 ```html
 <script src="js/three.min.js"></script>
-<script src="js/tombraider.js-v1.0.0.min.js"></script>
+<script src="js/tombraider.js-v0.0.1.min.js"></script>
 ```
 
 Then the following code will initate a new 3D Menu inside a div container with the attribute ```id``` set to containerId: 
