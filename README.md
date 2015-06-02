@@ -118,15 +118,19 @@ To execute the tests run ```grunt test``` in the root directory, to build it run
 
 ### Changelog ###
 
-*[02-06-2015] 0.0.1: First alpha version.0.1 instead but... anyway.
+[02-06-2015] 0.0.1: First alpha version.
 
 ### ToDo and ideas ###
 
-*Adding a lot more keyword actions.
-*Allowing custom actions.
-*Adding different selection effects.
-*Adding different transitions.
-*Adding 3D background scenarios.
+Adding a lot more keyword actions.
+
+Allowing custom actions.
+
+Adding different selection effects.
+
+Adding different transitions.
+
+Adding 3D background scenarios.
 
 ### License ###
 
