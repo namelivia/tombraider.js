@@ -44,37 +44,52 @@ Alternatively, those paremeters could have been defined in a JSON string and loa
 
 ### Reference ###
 
-__tombraidermenu(divId):__
+*__tombraidermenu(divId):__
 This is the constructor of the class, is used to initiate a new menu on the page placed inside the div defined by the id passed as a parameter (See Usage for an example).
-__addModel(name,model,action,params):__
+
+*__addModel(name,model,action,params):__
 Adds a new object to the scene, the objects have a name, a model url pointing to a JSON 3D model object, an action keyword, and a parameter for using with that action.
-__deleteSelected():__
+
+*__deleteSelected():__
 Deletes the currently selected object from the scene.
-__newScene():__
+
+*__newScene():__
 Clears the scene and reset the config values to their defaults.
-__moveLeft():__
+
+*__moveLeft():__
 Selects the previous object rotating the menu to the left.
-__moveRight():__
+
+*__moveRight():__
 Selects the next object rotating the menu to the right.
-__action():__
+
+*__action():__
 Triggers the action associated to the currently selected object (see Action keywords).
-__getSelectedName():__
+
+*__getSelectedName():__
 Returns the name of the object currently selected.
-__getRaduis():__
+
+*__getRaduis():__
 Returns the radius of the circle where the objects are placed in 3D space.
-__getCameraDistance():__
+
+*__getCameraDistance():__
 Returns the distance of the camera.
-__getCameraHeight():__
+
+*__getCameraHeight():__
 Returns the height of the camera.
-__getConfig():__
+
+*__getConfig():__
 Returns the current configuration of the menu as a valid JSON string (see JSON config structure).
-__setRadius(value):__
+
+*__setRadius(value):__
 Sets the radius of the circle where the objects are placed in 3D space.
-__setCameraHeight(value):__
+
+*__setCameraHeight(value):__
 Sets the height of the camera.
-__setCameraDistance(value):__
+
+*__setCameraDistance(value):__
 Sets the distance of the camera.
-__setConfig(config):__
+
+*__setConfig(config):__
 Clears the current scene and sets a new menu defined by the JSON string passed as parameter (see JSON config structure).
 
 #### Action keywords
