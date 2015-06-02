@@ -134,7 +134,7 @@ describe("TombRaider", function() {
 		TombRaiderMenu.prototype.render = jasmine.createSpy('render');
 		TombRaiderMenu.prototype.update();
 		expect(window.requestAnimationFrame).toHaveBeenCalled();
-		expect(clock.getDelta).toHaveBeenCalled();
+		//expect(clock.getDelta).toHaveBeenCalled();
 		expect(window.THREE.Vector3).toHaveBeenCalled();
 		expect(camera.lookAt).toHaveBeenCalled();
 		expect(TombRaiderMenu.prototype.objects[TombRaiderMenu.prototype.selected].rotation.y).toEqual(1.01);
