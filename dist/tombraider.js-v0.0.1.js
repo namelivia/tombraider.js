@@ -1,8 +1,10 @@
-/*! tomb-raider-menu v1.0.0 - 2015-06-02 
+/*! tombraider.js v0.0.1 - 2015-06-02 
  *  License: GPL2 */
 	var TombRaiderMenu = function(containerId){
 		this.objects = [];
-		if (!window.Detector.webgl) window.Detector.addGetWebGLMessage();
+		if (!window.Detector.webgl) {
+			window.Detector.addGetWebGLMessage();
+		}
 
 		var container = document.getElementById(containerId);
 		var ww = container.offsetWidth;
@@ -38,17 +40,18 @@
 	};
 
 	TombRaiderMenu.prototype.moveLeft = function (){
-		if (this.objects.length){
-			this.selected = this.mod(this.selected+1,this.objects.length);
-		}
-		this.selectedRotate += 1;
+		this.move(1);
 	};
 
 	TombRaiderMenu.prototype.moveRight = function (){
+		this.move(-1);
+	};
+
+	TombRaiderMenu.prototype.move = function (direction){
 		if (this.objects.length){
-			this.selected = this.mod(this.selected-1,this.objects.length);
+			this.selected = this.mod(this.selected+direction,this.objects.length);
 		}
-		this.selectedRotate -= 1;
+		this.selectedRotate += direction;
 	};
 
 	TombRaiderMenu.prototype.addModel = function (name,url,action,params){
@@ -100,14 +103,17 @@
 
 	TombRaiderMenu.prototype.update = function (){
 		requestAnimationFrame(TombRaiderMenu.prototype.update.bind(this));
-		var delta = this.clock.getDelta();
+		//TODO: apply delta
+		//var delta = this.clock.getDelta();
 		
 		if (this.cameraAngle !== this.angleStep*this.selectedRotate){
 			if (this.cameraAngle < this.angleStep*this.selectedRotate){
 				this.cameraAngle =
 					this.cameraAngle+(this.angleStep*this.selectedRotate-this.cameraAngle)/10;
 			}
-			else this.cameraAngle = this.cameraAngle-(this.cameraAngle-this.angleStep*this.selectedRotate)/10;
+			else {
+				this.cameraAngle = this.cameraAngle-(this.cameraAngle-this.angleStep*this.selectedRotate)/10;
+			}
 		}
 		this.camera.position.x=Math.cos(this.cameraAngle)*this.cameraDistance;
 		this.camera.position.z=Math.sin(this.cameraAngle)*this.cameraDistance;
@@ -152,7 +158,7 @@
 		try {
 			config = JSON.parse(config);
 		} catch(e){
-			alert("Error parsing the JSON configuration");
+			console.log("Error parsing the JSON configuration");
 		}
 		//TODO: Better to parseInt here or when exporting the json?
 		this.setRadius(parseInt(config.radius));

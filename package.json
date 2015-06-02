@@ -1,14 +1,14 @@
 {
-  "name": "tomb-raider-menu",
-  "version": "1.0.0",
-  "description": "3D Menu like the one in the early Tomb Raider games",
-  "main": "src/index.js",
+  "name": "tombraider.js",
+  "version": "0.0.1",
+  "description": "Javascript library for generating 3D menus like the ones in the early Tomb Raider games.",
+  "main": "src/tombraidermenu.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/namelivia/tomb-raider-menu.git"
+    "url": "https://github.com/namelivia/tombraider.js.git"
   },
   "keywords": [
     "3d",
@@ -20,9 +20,9 @@
   "author": "namelivia <jignacio.amelivia@gmail.com>",
   "license": "GPL2",
   "bugs": {
-    "url": "https://github.com/namelivia/tomb-raider-menu/issues"
+    "url": "https://github.com/namelivia/tombraider.js/issues"
   },
-  "homepage": "https://github.com/namelivia/tomb-raider-menu",
+  "homepage": "https://github.com/namelivia/tombraidermenu.js",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^0.5.1",
