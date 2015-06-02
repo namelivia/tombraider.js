@@ -105,7 +105,9 @@ The format of the JSON string in order to load an already configured and populat
 "{"objects":[{"name":"Go to Google","action":"link","params":"http://www.google.com","model":"models/chest/chest.json"},{"name":"Go To Facebook","action":"link","params":"http://www.facebook.com","model":"models/chest/chest.json"}],"distance":12000,"height":3000,"radius":6000}"
 ```
 
-At root level there is an array called ```objects```, it contains a collection of JSON objects with four defined parameters, ```name``` which is the object's name, ```model``` that is the path where the browser can find the JSON 3D model for the object, ```action``` is the keyword that defines the action to be executed when the action function is triggered and the object is selected and ```params```, containing the parameters pased to the corresponding action function. In this case the keyword ```link``` will make the browser go to the URL address defined by the ```param``` attribute. 
+At root level there is an array called ```objects```, it contains a collection of JSON objects with four defined parameters, ```name``` which is the object's name, ```model``` that is the path where the browser
+can find the JSON 3D model for the object, ```action``` is the keyword that defines the action to be executed when the action function is triggered and the object is selected and ```params```, containing the
+parameters pased to the corresponding action function. In this case the keyword ```link``` will make the browser go to the URL address defined by the ```params``` attribute. 
 Also at root level are defined the three general settings for the menu, ```distance``` that sets the distance of the camera, ```height``` that will set the height of the camera and finally ```radius``` which will define the radius of the circle where the objects are placed in 3D space.
 
 ### Testing and building from source ###
