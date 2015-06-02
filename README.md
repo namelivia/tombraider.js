@@ -96,7 +96,7 @@ Clears the current scene and sets a new menu defined by the JSON string passed a
 
 Currently there are the following actions available:
 
-```link```: Makes the browser going to the URL defined by ```param```.
+```link```: Makes the browser going to the URL defined by ```params```.
 
 ### JSON config structure ###
 
