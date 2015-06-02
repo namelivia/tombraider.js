@@ -40,8 +40,21 @@ module.exports = function(grunt) {
         src : ['src/**/*.js'],
 		options :{
         	specs : ['spec/**/*.js'],
+		},
+		istanbul: {
+			src: '<%= jasmine.src %>',
+			options: {
+				specs: '<%= jasmine.options.specs %>',
+				template: require('grunt-template-jasmine-istanbul'),
+				templateOptions: {
+					coverage: 'coverage/json/coverage.json',
+					report: [
+						{type: 'lcov'}
+					]
+				}
+			}
 		}
-	}
+	},
   });
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-jshint');
