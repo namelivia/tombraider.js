@@ -38,17 +38,18 @@
 	};
 
 	TombRaiderMenu.prototype.moveLeft = function (){
-		if (this.objects.length){
-			this.selected = this.mod(this.selected+1,this.objects.length);
-		}
-		this.selectedRotate += 1;
+		this.move(1);
 	};
 
 	TombRaiderMenu.prototype.moveRight = function (){
+		this.move(-1);
+	};
+
+	TombRaiderMenu.prototype.move = function (direction){
 		if (this.objects.length){
-			this.selected = this.mod(this.selected-1,this.objects.length);
+			this.selected = this.mod(this.selected+direction,this.objects.length);
 		}
-		this.selectedRotate -= 1;
+		this.selectedRotate += direction;
 	};
 
 	TombRaiderMenu.prototype.addModel = function (name,url,action,params){

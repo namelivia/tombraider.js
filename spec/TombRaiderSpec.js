@@ -229,18 +229,27 @@ describe("TombRaider", function() {
 		});
 
 		it("Test moving left", function(){
-			TombRaiderMenu.prototype.selected = 0;
+			spyOn(TombRaiderMenu.prototype,'move');
 			TombRaiderMenu.prototype.moveLeft();
-			expect(TombRaiderMenu.prototype.selected).toEqual(1);
-			TombRaiderMenu.prototype.moveLeft();
-			expect(TombRaiderMenu.prototype.selected).toEqual(0);
+			expect(TombRaiderMenu.prototype.move).toHaveBeenCalledWith(1);
 		});
 
 		it("Test moving right", function(){
+			spyOn(TombRaiderMenu.prototype,'move');
+			TombRaiderMenu.prototype.moveRight();
+			expect(TombRaiderMenu.prototype.move).toHaveBeenCalledWith(-1);
+		});
+		
+		it("Test moving", function(){
 			TombRaiderMenu.prototype.selected = 0;
-			TombRaiderMenu.prototype.moveRight();
+			TombRaiderMenu.prototype.move(1);
 			expect(TombRaiderMenu.prototype.selected).toEqual(1);
-			TombRaiderMenu.prototype.moveRight();
+			TombRaiderMenu.prototype.move(1);
+			expect(TombRaiderMenu.prototype.selected).toEqual(0);
+			TombRaiderMenu.prototype.selected = 0;
+			TombRaiderMenu.prototype.move(-1);
+			expect(TombRaiderMenu.prototype.selected).toEqual(1);
+			TombRaiderMenu.prototype.move(-1);
 			expect(TombRaiderMenu.prototype.selected).toEqual(0);
 		});
 	});
