@@ -5,7 +5,7 @@ tombraider.js
 [![Test Coverage](https://codeclimate.com/github/namelivia/tomb-raider-menu/badges/coverage.svg)](https://codeclimate.com/github/namelivia/tomb-raider-menu/coverage)
 
 __tombraider.js__ is a Javascript library for generating 3D spinning menus like the ones in the early Tomb Raider
-games. It is built on top of three.js. You can see it in action in [this demos page](under_construction).
+games. It is built on top of three.js. You can see it in action in [this demos page](http://tombraiderjs.namelivia.com#demo).
 
 ### Dependencies ###
 
