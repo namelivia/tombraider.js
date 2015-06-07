@@ -146,19 +146,27 @@ describe("TombRaider", function() {
 		TombRaiderMenu.prototype.selected = 0;
 		TombRaiderMenu.prototype.objects = [
 			{action : 'link', params: 'http://www.google.com'},
+			{action : 'alert', params: "test1"},
 			{action : 'foo', params: 'bar'}
 		];
+		window.CustomEvent = jasmine.createSpy('customEvent');
+		document.dispatchEvent = jasmine.createSpy('eventDispatched');
 		spyOn(TombRaiderMenu.prototype,'goToLink');
 		TombRaiderMenu.prototype.action();
 		expect(TombRaiderMenu.prototype.goToLink).toHaveBeenCalledWith(
 			TombRaiderMenu.prototype.objects[0].params
 		);
 		TombRaiderMenu.prototype.selected = 1;
+		spyOn(window,'alert');
+		TombRaiderMenu.prototype.action();
+		expect(window.alert).toHaveBeenCalledWith('test1');
+		TombRaiderMenu.prototype.selected = 2;
 		spyOn(console,'error');
 		TombRaiderMenu.prototype.action();
 		expect(console.error).toHaveBeenCalledWith(
 			'Unknown action'
 		);
+		expect(document.dispatchEvent.calls.count()).toEqual(3);
 	});
 
 	it("Test the loadModel function", function(){

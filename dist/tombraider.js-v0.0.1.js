@@ -1,4 +1,4 @@
-/*! tombraider.js v0.0.1 - 2015-06-02 
+/*! tombraider.js v0.0.1 - 2015-06-07 
  *  License: GPL2 */
 	var TombRaiderMenu = function(containerId){
 		this.objects = [];
@@ -66,10 +66,15 @@
 	};
 
 	TombRaiderMenu.prototype.action = function (){
+		var event = new CustomEvent("action", { "detail": { "selected" : this.selected } });
+		document.dispatchEvent(event);
 		if (this.objects[this.selected]){
 			switch(this.objects[this.selected].action) {
 				case 'link':
 					this.goToLink(this.objects[this.selected].params);
+					break;
+				case 'alert':
+					alert(this.objects[this.selected].params);
 					break;
 				default:
 					console.error('Unknown action');

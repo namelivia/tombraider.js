@@ -64,10 +64,15 @@
 	};
 
 	TombRaiderMenu.prototype.action = function (){
+		var event = new CustomEvent("action", { "detail": { "selected" : this.selected } });
+		document.dispatchEvent(event);
 		if (this.objects[this.selected]){
 			switch(this.objects[this.selected].action) {
 				case 'link':
 					this.goToLink(this.objects[this.selected].params);
+					break;
+				case 'alert':
+					alert(this.objects[this.selected].params);
 					break;
 				default:
 					console.error('Unknown action');
