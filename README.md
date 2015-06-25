@@ -99,11 +99,12 @@ Clears the current scene and sets a new menu defined by the JSON string passed a
 Currently there are the following actions available:
 
 ```link```: Makes the browser going to the URL defined by ```params```.
+
 ```alert```: Displays a Javascript alert defined by ```params```.
 
 ### Events ###
 
-When calling the action function, there is a CustomEvent risen called "action" and containing theselected item index number in the detail, so out of the library function you can capture this event and execute whatever you want. For example:
+When calling the action function, there is a CustomEvent risen called "action" and containing the selected item index number in the detail, so out of the library function you can capture this event and execute whatever you want. For example:
 ```javascript
 document.addEventListener("action", function(e) {
 	alert(e.detail.selected);
