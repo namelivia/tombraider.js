@@ -99,12 +99,23 @@ Clears the current scene and sets a new menu defined by the JSON string passed a
 Currently there are the following actions available:
 
 ```link```: Makes the browser going to the URL defined by ```params```.
+```alert```: Displays a Javascript alert defined by ```params```.
+
+### Events ###
+
+When calling the action function, there is a CustomEvent risen called "action" and containing theselected item index number in the detail, so out of the library function you can capture this event and execute whatever you want. For example:
+```javascript
+document.addEventListener("action", function(e) {
+	alert(e.detail.selected);
+});
+
+```
 
 ### JSON config structure ###
 
 The format of the JSON string in order to load an already configured and populated menu is as follows:
 ```javascript
-"{"objects":[{"name":"Go to Google","action":"link","params":"http://www.google.com","model":"models/chest/chest.json"},{"name":"Go To Facebook","action":"link","params":"http://www.facebook.com","model":"models/chest/chest.json"}],"distance":12000,"height":3000,"radius":6000}"
+"{"objects":[{"name":"go to google","action":"link","params":"http://www.google.com","model":"models/chest/chest.json"},{"name":"go to facebook","action":"link","params":"http://www.facebook.com","model":"models/chest/chest.json"}],"distance":12000,"height":3000,"radius":6000}"
 ```
 
 At root level there is an array called ```objects```, it contains a collection of JSON objects with four defined parameters, ```name``` which is the object's name, ```model``` that is the path where the browser
@@ -125,8 +136,6 @@ To execute the tests run ```grunt test``` in the root directory, to build it run
 ### ToDo and ideas ###
 
 Adding a lot more keyword actions.
-
-Allowing custom actions.
 
 Adding different selection effects.
 
