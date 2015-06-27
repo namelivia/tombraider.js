@@ -102,6 +102,10 @@ Currently there are the following actions available:
 
 ```alert```: Displays a Javascript alert defined by ```params```.
 
+``````: An empty string means "Don't do anything" but it does not rise an error.
+
+Any other words as an action keyword will be reported as an error in the browser console.
+
 ### Events ###
 
 When calling the action function, there is a CustomEvent risen called "action" and containing the selected item index number in the detail, so out of the library function you can capture this event and execute whatever you want. For example:
