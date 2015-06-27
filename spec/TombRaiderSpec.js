@@ -147,7 +147,8 @@ describe("TombRaider", function() {
 		TombRaiderMenu.prototype.objects = [
 			{action : 'link', params: 'http://www.google.com'},
 			{action : 'alert', params: "test1"},
-			{action : 'foo', params: 'bar'}
+			{action : 'foo', params: 'bar'},
+			{action : '', params: 'bar'}
 		];
 		window.CustomEvent = jasmine.createSpy('customEvent');
 		document.dispatchEvent = jasmine.createSpy('eventDispatched');
@@ -166,7 +167,10 @@ describe("TombRaider", function() {
 		expect(console.error).toHaveBeenCalledWith(
 			'Unknown action'
 		);
-		expect(document.dispatchEvent.calls.count()).toEqual(3);
+		TombRaiderMenu.prototype.selected = 3;
+		TombRaiderMenu.prototype.action();
+		expect(console.error.calls.count()).toEqual(1);
+		expect(document.dispatchEvent.calls.count()).toEqual(4);
 	});
 
 	it("Test the loadModel function", function(){

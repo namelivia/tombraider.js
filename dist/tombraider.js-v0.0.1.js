@@ -1,4 +1,4 @@
-/*! tombraider.js v0.0.1 - 2015-06-07 
+/*! tombraider.js v0.0.1 - 2015-06-27 
  *  License: GPL2 */
 	var TombRaiderMenu = function(containerId){
 		this.objects = [];
@@ -75,6 +75,8 @@
 					break;
 				case 'alert':
 					alert(this.objects[this.selected].params);
+					break;
+				case '':
 					break;
 				default:
 					console.error('Unknown action');

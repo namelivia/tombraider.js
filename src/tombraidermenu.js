@@ -74,6 +74,8 @@
 				case 'alert':
 					alert(this.objects[this.selected].params);
 					break;
+				case '':
+					break;
 				default:
 					console.error('Unknown action');
 			} 
