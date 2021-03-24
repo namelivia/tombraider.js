@@ -5,6 +5,7 @@
   "main": "src/tombraidermenu.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild src/tombraidermenu.js --bundle --outfile=dist/tombraider.js-v0.0.1.min.js",
     "prettier": "prettier"
   },
   "repository": {
@@ -25,15 +26,7 @@
   },
   "homepage": "https://github.com/namelivia/tombraidermenu.js",
   "devDependencies": {
-    "grunt": "^1.1.0",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-jasmine": "^2.2.0",
-    "grunt-contrib-jshint": "^3.0.0",
-    "grunt-contrib-qunit": "^4.0.0",
-    "grunt-contrib-uglify": "^5.0.0",
-    "grunt-template-jasmine-istanbul": "^0.4.0",
-    "requirejs": "^2.1.16",
+    "esbuild": "^0.9.6",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
