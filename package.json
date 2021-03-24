@@ -5,7 +5,7 @@
   "main": "src/tombraidermenu.js",
   "scripts": {
     "test": "jest",
-    "build": "esbuild src/tombraidermenu.js --bundle --outfile=dist/tombraider.js-v0.0.1.min.js",
+    "build": "esbuild src/tombraidermenu.ts --bundle --outfile=dist/tombraider.js-v0.0.1.min.js",
     "prettier": "prettier"
   },
   "repository": {
@@ -27,6 +27,7 @@
   "homepage": "https://github.com/namelivia/tombraidermenu.js",
   "devDependencies": {
     "esbuild": "^0.9.6",
+    "esbuild-jest": "^0.5.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",

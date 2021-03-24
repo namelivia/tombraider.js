@@ -1,5 +1,8 @@
 module.exports = {
-  moduleFileExtensions: ["js"],
+  moduleFileExtensions: ["ts", "js"],
   collectCoverage: true,
-  collectCoverageFrom: ["src/**/*.{js}"]
+  collectCoverageFrom: ["src/**/*.{ts|js}"],
+  transform: {
+    "^.+\\.(js|ts|tsx)$": "esbuild-jest"
+  }
 };
