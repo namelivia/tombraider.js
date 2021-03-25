@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/namelivia/tombraidermenu.js",
   "devDependencies": {
-    "esbuild": "^0.9.6",
+    "esbuild": "^0.9.7",
     "esbuild-jest": "^0.5.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
