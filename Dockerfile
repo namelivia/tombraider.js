@@ -4,6 +4,6 @@ WORKDIR /app
 COPY package*.json ./
 COPY . .
 
-# build stage for development
-FROM base-builder as development-builder
+# build stage for testing
+FROM base-builder as testing
 RUN npm install --also=dev
