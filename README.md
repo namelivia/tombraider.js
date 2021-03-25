@@ -1,6 +1,6 @@
 tombraider.js
 ================
-[![Build Status](https://travis-ci.org/namelivia/tombraider.js.svg?branch=master)](https://travis-ci.org/namelivia/tombraider.js)
+[![Build Status](https://github.com/namelivia/tombraider.js/actions/workflows/build.yml/badge.svg)](https://github.com/namelivia/tombraider.js/actions/workflows/build.yml)
 [![Code Climate](https://codeclimate.com/github/namelivia/tomb-raider-menu/badges/gpa.svg)](https://codeclimate.com/github/namelivia/tomb-raider-menu)
 [![Test Coverage](https://codeclimate.com/github/namelivia/tomb-raider-menu/badges/coverage.svg)](https://codeclimate.com/github/namelivia/tomb-raider-menu/coverage)
 
