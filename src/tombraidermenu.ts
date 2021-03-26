@@ -12,12 +12,18 @@ class TombRaiderMenu {
     camera: Camera
     ring: Ring
 
-    constructor (containerId: string): TombRaiderMenu {
+    constructor (containerId: string) {
         this.items = new ItemsCollection()
-        this.scene  = new Scene()
+        //TODO: width and height
+        this.scene  = new Scene(200, 300)
         this.camera = new Camera()
         this.ring = new Ring()
-        this.newScene()
+
+        this.setRadius(6000)
+
+        //Position camera
+        this.camera.setDistance(12000)
+        this.camera.setHeight(3000)
     }
 
     //This will probably go away
@@ -25,39 +31,17 @@ class TombRaiderMenu {
         window.location.href = url
     }
 
-    newScene () {
-      this.setRadius(6000)
-
-      //Position camera
-      this.camera.setAngle(0)
-      this.camera.setDistance(12000)
-      this.camera.setHeight(3000)
-
-      this.deleteAllObjects()
-      this.selected = 0
-      this.selectedRotate = 0
-    }
-
-    //This will probably go away
-    move(direction: int) {
-      if (!this.items.empty()) {
-        this.selected = this.mod(this.selected + direction, this.items.count())
-        console.log(this.selected)
-      }
-      this.selectedRotate += direction
-      console.log(this.selectedRotate)
-    }
-
-    //stay
+    //api
     moveLeft() {
-      this.move(1)
+      this.items.select(1)
     }
 
-    //stay
+    //api
     moveRight() {
-      this.move(-1)
+      this.items.select(-1)
     }
 
+    //api
     /**
     * @deprecated Since version 0.2. Will be deleted in version 1.0. Use addItem instead.
     */
@@ -65,119 +49,81 @@ class TombRaiderMenu {
         this.addItem(name, model, action, params)
     }
 
-    //stay
+    //api
     addItem(name: string, model:string, action:string, params:string) {
-      let newItem = new Item(name, model, action, params)
+      let newItem = new Item(this.items.count(), name, model, action, params)
       this.items.add(newItem)
-      this.scene.loadModel(model)
+      //Now the ring needs to update
+      this.ring.updateSeparation(this.items.count())
     }
 
-    //stay
+    //api
     getSelectedName(): string {
       if (this.items.selected()) {
         return this.items.selected().name
       }
     }
 
-    //stay
+    //api
     getRadius () {
       return this.ring.getRadius()
     }
 
-    //stay
+    //api
     getCameraDistance () {
       return this.camera.getDistance()
     }
 
-    //stay
+    //api
     getCameraHeight () {
       return this.camera.getHeight()
     }
 
-    //stay
-    setRadius (radius: int) {
+    //api
+    setRadius (radius: number) {
       this.ring.setRadius(radius)
     }
 
-    //stay
-    setCameraHeight (height: int) {
+    //api
+    setCameraHeight (height: number) {
       this.camera.setHeight(height)
     }
 
-    //stay
-    setCameraDistance (distance: int) {
+    //api
+    setCameraDistance (distance: number) {
       this.camera.setDistance(distance)
-    }
-
-    getNewCameraAngle() {
-      let currentAngle = this.camera.angle()
-      let targetAngle = this.ring.getSeparation() * this.selectedRotate
-      if (currentAngle === targetAngle) {
-        return currentAngle
-      }
-      //Rotate towards the target angle
-      if (currentAngle < targetAngle) {
-        return currentAngle + (targetAngle - currentAngle) / 10
-      }
-      return currentAngle - (currentAngle - targetAngle) / 10
     }
 
     //This will probably go away
     update () {
-      requestAnimationFrame(TombRaiderMenu.prototype.update.bind(this))
-      //TODO: apply delta
-      //var delta = this.clock.getDelta();
     
-
-      //Update the camera angle if needed
-      this.camera.setAngle(this.getNewCameraAngle())
-
-      //Place the camera on the scene
+      //Rotates the camera if needed, and place it
+      this.camera.updateAngle(this.ring.getSeparation(), this.items.getSelectedIndex())
       this.scene.placeCamera(this.camera.getX(), this.camera.getY() , this.camera.getZ())
 
-      // Place the items
-      if (!this.items.empty()) {
-        for (var i = 0; i < this.items.count(); i++) {
-          if (i === this.selected) {
-            this.items[i].rotation.y += 0.01
-          }
-          this.items[i].position.x = this.ring.getItemX(i)
-          this.items[i].position.z = this.ring.getItemZ(i)
+      // Calculate the item placement
+      for (var i = 0; i < this.items.count(); i++) {
+        if (i === this.selected) {
+          this.items[i].rotation.y += 0.01
         }
+        this.items[i].position.x = this.ring.getItemX(i)
+        this.items[i].position.z = this.ring.getItemZ(i)
       }
-      this.render()
+      this.scene.update()
     }
 
-    //This will probably go away
-    render () {
-      this.scene.render()
-    }
-
-    //This will probably go away
-    mod () {
-        return ((a % b) + b) % b
-    }
-
-    //This will probably go away
-    deleteAllObjects () {
-      while (!this.items.empty()) {
-        this.deleteSelected()
-      }
-    }
-
-    //stay
+    //api
     deleteSelected () {
       var selectedObject = this.items.selected()
-      this.scene.removeModel(selectedObject) //TODO: this would be the index
+      this.scene.removeModel(this.items.getSelectedIndex()) //TODO: this would be the index
       this.items.remove(selectedObject)
-      if (!this.items,empty()) {
+      if (!this.items.empty()) {
         this.moveLeft()
       }
     }
 
-    //stay
+    //api
     setConfig (configJson: string) {
-      this.newScene()
       const manager = new ConfigManager()
       const config = manager.load(configJson)
       this.setRadius(config.radius)
@@ -196,7 +142,7 @@ class TombRaiderMenu {
       }*/
     }
 
-    //stay
+    //api
     getConfig() {
       return JSON.stringify({
           "items": this.items.serialize(),
@@ -205,20 +151,5 @@ class TombRaiderMenu {
           "radius": this.getRadius()
       })
     }
-
-    //This will probably go away
-    loadModel(model, scene, items) {
-      var loader = new window.THREE.JSONLoader()
-      loader.load(
-        model.model,
-        function (geometry, materials) {
-          let newItem(name, action, params, model)
-          this.items.addItem(newItem)
-          this.ring.updateSeparation(this.items.count())
-          //TODO: Set the selected.
-        }.bind(this)
-      )
-    }
-
 }
 export default TombRaiderMenu

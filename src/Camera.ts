@@ -1,15 +1,15 @@
 class Camera {
-    _angle: int
-    distance: int
-    height: int
+    angle: number
+    distance: number
+    height: number
 
-    constructor(): Camera {
-        this._angle = 0
+    constructor() {
+        this.angle = 0
         this.distance = 0
         this.height = 0
     }
 
-    setHeight(height: int) {
+    setHeight(height: number) {
         this.height = height
     }
 
@@ -17,28 +17,42 @@ class Camera {
         return this.height
     }
 
-    setDistance(distance: int) {
+    getDistance() {
+        return this.distance
+    }
+
+    setDistance(distance: number) {
         this.distance = distance
     }
 
-    setAngle(angle: int) {
-        this._angle = angle
+    private getNewAngle(targetAngle: number) {
+      //Stays where it is
+      if (this.angle === targetAngle) {
+        return this.angle
+      }
+
+      //Or rotates towards the target angle
+      let step = 10
+      if (this.angle < targetAngle) {
+        return this.angle + (targetAngle - this.angle) / step
+      }
+      return this.angle - (this.angle - targetAngle) / step
     }
 
-    angle(): int {
-        return this._angle
+    updateAngle(separation:number, index: number) {
+      this.angle = this.getNewAngle(separation * index)
     }
 
-    getX(): int {
-        return Math.cos(this._angle) * this.distance
+    getX(): number {
+        return Math.cos(this.angle) * this.distance
     }
 
-    getY(): int {
+    getY(): number {
         return this.height
     }
 
-    getZ(): int {
-        return Math.sin(this._angle) * this.distance
+    getZ(): number {
+        return Math.sin(this.angle) * this.distance
     }
 }
 export default Camera

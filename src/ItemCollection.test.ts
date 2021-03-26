@@ -11,7 +11,7 @@ describe("ItemsCollection", () => {
 
   test("Test adding an item to the collection", () => {
     const collection = new ItemsCollection()
-    const item = new Item('testName', 'testAction', 'testParams', 'testModel')
+    const item = new Item(1, 'testName', 'testAction', 'testParams', 'testModel')
     collection.add(item)
     expect(collection.count()).toEqual(1)
     expect(collection.empty()).toBe(false)
@@ -21,9 +21,10 @@ describe("ItemsCollection", () => {
   test("Test serialilzing an items collection", () => {
     const collection = new ItemsCollection()
     expect(collection.serialize()).toEqual([])
-    const item = new Item('testName', 'testAction', 'testParams', 'testModel')
+    const item = new Item(1, 'testName', 'testAction', 'testParams', 'testModel')
     collection.add(item)
     expect(collection.serialize()).toEqual([{
+        "index": 1,
         "name": "testName",
         "action": "testAction",
         "params": "testParams",

@@ -2,7 +2,7 @@ import Item from './Item'
 class ItemsCollection {
 
     items: Array<Item>
-    _selected: int
+    _selected: number
 
     constructor() {
         this.items = []
@@ -13,7 +13,7 @@ class ItemsCollection {
         return this.items.length === 0
     }
 
-    count(): int {
+    count(): number {
         return this.items.length
     }
 
@@ -31,6 +31,13 @@ class ItemsCollection {
 
     serialize(): any {
         return this.items.map(function (item) { return item.serialize() })
+    }
+
+    select(direction: number) {
+      if (!this.empty()) {
+        let itemsCount = this.count()
+        this._selected = ((this._selected + direction % itemsCount) + itemsCount) % itemsCount
+      }
     }
 }
 export default ItemsCollection

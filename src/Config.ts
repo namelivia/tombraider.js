@@ -1,10 +1,10 @@
 class Config {
 
-    radius: int
-    distance: int
-    height: int
+    radius: number
+    distance: number
+    height: number
 
-    constructor(radius:int , distance:int , height:int) {
+    constructor(radius:number , distance:number , height:number) {
         this.radius = radius
         this.distance = distance
         this.height = height

@@ -1,33 +1,33 @@
 class Ring {
 
-    radius: int
-    separation: int
+    radius: number
+    separation: number
 
     constructor() {
         this.separation = 0
     }
 
-    getRadius():int {
+    getRadius():number {
         return this.radius
     }
 
-    setRadius(radius: int) {
+    setRadius(radius: number) {
         this.radius = radius
     }
 
-    getSeparation():int {
+    getSeparation():number {
         return this.separation
     }
 
-    updateSeparation(itemsCount: int) {
+    updateSeparation(itemsCount: number) {
         this.separation = (360 / itemsCount) * (Math.PI / 180)
     }
 
-    getItemX(index: int) {
+    getItemX(index: number) {
         return Math.cos(this.separation * index) * this.radius
     }
 
-    getItemZ(index: int) {
+    getItemZ(index: number) {
         return Math.sin(this.separation * index) * this.radius
     }
 

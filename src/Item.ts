@@ -1,11 +1,13 @@
 class Item {
 
+    index: number
     name: string
     action: string
     params: string
     model: string
 
-    constructor(name: string, action: string, params: string, model: string) {
+    constructor(index: number, name: string, action: string, params: string, model: string) {
+        this.index = index
         this.name = name
         this.action = action
         this.params = params
@@ -18,6 +20,7 @@ class Item {
 
     serialize(): any {
         return {
+            "index": this.index,
             "name": this.name,
             "action": this.action,
             "params": this.params,
