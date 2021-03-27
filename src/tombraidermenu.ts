@@ -1,20 +1,20 @@
 import ConfigManager from './ConfigManager'
 import ItemsCollection from './ItemsCollection'
 import Item from './Item'
-import Scene from './Scene'
+//import Scene from './Scene'
 import Camera from './Camera'
 import Ring from './Ring'
 
 class TombRaiderMenu {
   items: ItemsCollection
-  scene: Scene
+  //scene: Scene
   camera: Camera
   ring: Ring
 
   constructor(containerId: string) {
     this.items = new ItemsCollection()
     //TODO: width and height
-    this.scene = new Scene(200, 300)
+    //this.scene = new Scene(200, 300)
     this.camera = new Camera()
     this.ring = new Ring()
 
@@ -100,27 +100,27 @@ class TombRaiderMenu {
       this.ring.getSeparation(),
       this.items.selected().index,
     )
-    this.scene.placeCamera(
+    /*this.scene.placeCamera(
       this.camera.getX(),
       this.camera.getY(),
       this.camera.getZ(),
-    )
+    )*/
 
     // Calculate the item placement
-    for (var i = 0; i < this.items.count(); i++) {
+    /*for (var i = 0; i < this.items.count(); i++) {
       if (i === this.selected) {
         this.items[i].rotation.y += 0.01
       }
       this.items[i].position.x = this.ring.getItemX(i)
       this.items[i].position.z = this.ring.getItemZ(i)
-    }
-    this.scene.update()
+    }*/
+    //this.scene.update()
   }
 
   //api
   deleteSelected() {
     var selectedObject = this.items.selected()
-    this.scene.removeModel(this.items.selected().index)
+    //this.scene.removeModel(this.items.selected().index)
     this.items.remove(selectedObject)
     if (!this.items.empty()) {
       this.moveLeft()
