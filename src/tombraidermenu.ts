@@ -1,9 +1,9 @@
-import ConfigManager from './ConfigManager'
-import ItemsCollection from './ItemsCollection'
-import Item from './Item'
+import ConfigManager from './Configuration/ConfigManager'
+import ItemsCollection from './Item/ItemsCollection'
+import Item from './Item/Item'
 //import Scene from './Scene'
-import Camera from './Camera'
-import Ring from './Ring'
+import Camera from './Scene/Camera'
+import Ring from './Scene/Ring'
 
 class TombRaiderMenu {
   items: ItemsCollection
