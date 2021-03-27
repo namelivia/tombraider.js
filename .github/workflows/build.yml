@@ -29,4 +29,4 @@ jobs:
         with:
           image: testing-container:latest
           shell: sh 
-          run: npm run test
+          run: npm run typecheck && npm run test
