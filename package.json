@@ -5,7 +5,7 @@
   "main": "src/tombraidermenu.js",
   "scripts": {
     "test": "jest",
-    "build": "esbuild src/tombraidermenu.ts --bundle --outfile=dist/tombraider.js-v0.0.1.min.js",
+    "build": "node build.js",
     "prettier": "prettier",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
