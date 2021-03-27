@@ -1,48 +1,48 @@
-import ItemsCollection from "./ItemsCollection";
-import Item from "./Item";
+import ItemsCollection from './ItemsCollection'
+import Item from './Item'
 
-describe("ItemsCollection", () => {
-  test("Test initializing an empty item collection", () => {
-    const collection = new ItemsCollection();
-    expect(collection.count()).toEqual(0);
-    expect(collection.empty()).toBe(true);
-    expect(collection.selected()).toBe(undefined);
-  });
+describe('ItemsCollection', () => {
+  test('Test initializing an empty item collection', () => {
+    const collection = new ItemsCollection()
+    expect(collection.count()).toEqual(0)
+    expect(collection.empty()).toBe(true)
+    expect(collection.selected()).toBe(undefined)
+  })
 
-  test("Test adding an item to the collection", () => {
-    const collection = new ItemsCollection();
+  test('Test adding an item to the collection', () => {
+    const collection = new ItemsCollection()
     const item = new Item(
       1,
-      "testName",
-      "testAction",
-      "testParams",
-      "testModel"
-    );
-    collection.add(item);
-    expect(collection.count()).toEqual(1);
-    expect(collection.empty()).toBe(false);
-    expect(collection.selected()).toBe(item);
-  });
+      'testName',
+      'testAction',
+      'testParams',
+      'testModel',
+    )
+    collection.add(item)
+    expect(collection.count()).toEqual(1)
+    expect(collection.empty()).toBe(false)
+    expect(collection.selected()).toBe(item)
+  })
 
-  test("Test serialilzing an items collection", () => {
-    const collection = new ItemsCollection();
-    expect(collection.serialize()).toEqual([]);
+  test('Test serialilzing an items collection', () => {
+    const collection = new ItemsCollection()
+    expect(collection.serialize()).toEqual([])
     const item = new Item(
       1,
-      "testName",
-      "testAction",
-      "testParams",
-      "testModel"
-    );
-    collection.add(item);
+      'testName',
+      'testAction',
+      'testParams',
+      'testModel',
+    )
+    collection.add(item)
     expect(collection.serialize()).toEqual([
       {
         index: 1,
-        name: "testName",
-        action: "testAction",
-        params: "testParams",
-        model: "testModel",
+        name: 'testName',
+        action: 'testAction',
+        params: 'testParams',
+        model: 'testModel',
       },
-    ]);
-  });
-});
+    ])
+  })
+})

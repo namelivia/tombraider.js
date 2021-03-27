@@ -1,26 +1,26 @@
 class Item {
-  index: number;
-  name: string;
-  action: string;
-  params: string;
-  model: string;
+  index: number
+  name: string
+  action: string
+  params: string
+  model: string
 
   constructor(
     index: number,
     name: string,
     action: string,
     params: string,
-    model: string
+    model: string,
   ) {
-    this.index = index;
-    this.name = name;
-    this.action = action;
-    this.params = params;
-    this.model = model;
+    this.index = index
+    this.name = name
+    this.action = action
+    this.params = params
+    this.model = model
   }
 
   getName(): string {
-    return this.name;
+    return this.name
   }
 
   serialize(): any {
@@ -30,7 +30,7 @@ class Item {
       action: this.action,
       params: this.params,
       model: this.model,
-    };
+    }
   }
 }
-export default Item;
+export default Item
