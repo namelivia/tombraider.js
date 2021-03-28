@@ -23,9 +23,9 @@ class Item {
     return this.name
   }
 
-  serialize(): any {
+  serialize(): {name: string, model: string, action:string, params: string} {
     return {
-      index: this.index,
+      //index: this.index, TODO: I may need to add the index here
       name: this.name,
       action: this.action,
       params: this.params,

@@ -1,46 +1,32 @@
-import ConfigManager from './Configuration/ConfigManager'
-import ItemsCollection from './Item/ItemsCollection'
-import Item from './Item/Item'
 //import Scene from './Scene'
-import Camera from './Scene/Camera'
-import Ring from './Scene/Ring'
+import { default as ConfigurationApi } from './Configuration/Api'
+import { default as WorldApi } from './World/Api'
+import { default as ItemApi } from './Item/Api'
 
 class TombRaiderMenu {
-  items: ItemsCollection
   //scene: Scene
-  camera: Camera
-  ring: Ring
+  configuration: ConfigurationApi
+  world: WorldApi
+  item: ItemApi
 
   constructor(containerId: string) {
-    this.items = new ItemsCollection()
     //TODO: width and height
     //this.scene = new Scene(200, 300)
-    this.camera = new Camera()
-    this.ring = new Ring()
-
-    this.setRadius(6000)
-
-    //Position camera
-    this.camera.setDistance(12000)
-    this.camera.setHeight(3000)
   }
 
-  //This will probably go away
+  //TODO: This will probably go away
   goToLink(url: string) {
     window.location.href = url
   }
 
-  //api
   moveLeft() {
-    this.items.select(1)
+    this.item.selectNext()
   }
 
-  //api
   moveRight() {
-    this.items.select(-1)
+    this.item.selectPrevious()
   }
 
-  //api
   /**
    * @deprecated Since version 0.2. Will be deleted in version 1.0. Use addItem instead.
    */
@@ -48,113 +34,59 @@ class TombRaiderMenu {
     this.addItem(name, model, action, params)
   }
 
-  //api
   addItem(name: string, model: string, action: string, params: string) {
-    let newItem = new Item(this.items.count(), name, model, action, params)
-    this.items.add(newItem)
-    //Now the ring needs to update
-    this.ring.updateSeparation(this.items.count())
+    this.item.add(name, model, action, params)
   }
 
-  //api
   getSelectedName(): string {
-    if (this.items.selected()) {
-      return this.items.selected().name
-    }
+    return this.item.getSelectedName()
   }
 
-  //api
   getRadius() {
-    return this.ring.getRadius()
+    return this.world.getRadius()
   }
 
-  //api
   getCameraDistance() {
-    return this.camera.getDistance()
+    return this.world.getCameraDistance()
   }
 
-  //api
   getCameraHeight() {
-    return this.camera.getHeight()
+    return this.world.getCameraHeight()
   }
 
-  //api
   setRadius(radius: number) {
-    this.ring.setRadius(radius)
+    this.world.setRadius(radius)
   }
 
-  //api
   setCameraHeight(height: number) {
-    this.camera.setHeight(height)
+    this.world.setCameraHeight(height)
   }
 
-  //api
   setCameraDistance(distance: number) {
-    this.camera.setDistance(distance)
+    this.world.setCameraDistance(distance)
   }
 
-  //This will probably go away
-  update() {
-    //Rotates the camera if needed, and place it
-    this.camera.updateAngle(
-      this.ring.getSeparation(),
-      this.items.selected().index,
-    )
-    /*this.scene.placeCamera(
-      this.camera.getX(),
-      this.camera.getY(),
-      this.camera.getZ(),
-    )*/
-
-    // Calculate the item placement
-    /*for (var i = 0; i < this.items.count(); i++) {
-      if (i === this.selected) {
-        this.items[i].rotation.y += 0.01
-      }
-      this.items[i].position.x = this.ring.getItemX(i)
-      this.items[i].position.z = this.ring.getItemZ(i)
-    }*/
-    //this.scene.update()
-  }
-
-  //api
   deleteSelected() {
-    var selectedObject = this.items.selected()
-    //this.scene.removeModel(this.items.selected().index)
-    this.items.remove(selectedObject)
-    if (!this.items.empty()) {
-      this.moveLeft()
-    }
+      this.item.deleteSelected()
   }
 
-  //api
-  setConfig(configJson: string) {
-    const manager = new ConfigManager()
-    const config = manager.load(configJson)
-    this.setRadius(config.radius)
-    this.setCameraDistance(config.distance)
-    this.setCameraHeight(config.height)
+  setConfig(json: string) {
+    var config = this.configuration.load(json)
 
-    //TODO: WIP
-    /*var objectsLength = config.objects.length
-      for (var i = 0; i < objectsLength; i++) {
-        this.addModel(
-          config.objects[i].name,
-          config.objects[i].model,
-          config.objects[i].action,
-          config.objects[i].params
-        )
-      }*/
+    this.world.setRadius(config.radius)
+    this.world.setCameraDistance(config.distance)
+    this.world.setCameraHeight(config.height)
+
+    this.item.addMany(config.objects)
   }
 
-  //api
   getConfig() {
-    return JSON.stringify({
-      items: this.items.serialize(),
-      distance: this.getCameraDistance(),
-      height: this.getCameraHeight(),
-      radius: this.getRadius(),
-    })
+    return this.configuration.save(
+        this.world.getRadius(),
+        this.world.getCameraDistance(),
+        this.world.getCameraHeight(),
+        this.item.serialize()
+    )
   }
 }
 export default TombRaiderMenu

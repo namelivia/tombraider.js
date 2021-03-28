@@ -37,7 +37,7 @@ describe('ItemsCollection', () => {
     collection.add(item)
     expect(collection.serialize()).toEqual([
       {
-        index: 1,
+        //:index: 1, TODO
         name: 'testName',
         action: 'testAction',
         params: 'testParams',

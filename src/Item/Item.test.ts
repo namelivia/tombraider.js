@@ -21,7 +21,7 @@ describe('Item', () => {
       'testModel',
     )
     expect(item.serialize()).toEqual({
-      index: 1,
+      //index: 1, TODO
       name: 'testName',
       action: 'testAction',
       params: 'testParams',

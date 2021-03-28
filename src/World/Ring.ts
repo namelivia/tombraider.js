@@ -1,6 +1,6 @@
 class Ring {
   radius: number
-  separation: number
+  separation: number //The angle for the items to be evenly placed
 
   constructor() {
     this.separation = 0
@@ -18,7 +18,7 @@ class Ring {
     return this.separation
   }
 
-  updateSeparation(itemsCount: number) {
+  setItemsNumber(itemsCount: number) {
     this.separation = (360 / itemsCount) * (Math.PI / 180)
   }
 

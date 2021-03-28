@@ -2,11 +2,13 @@ class Config {
   radius: number
   distance: number
   height: number
+  objects: Array<{name: string, model: string, action:string, params: string}>
 
-  constructor(radius: number, distance: number, height: number) {
+        constructor(radius: number, distance: number, height: number, objects: Array<{name: string, model: string, action:string, params: string}>) {
     this.radius = radius
     this.distance = distance
     this.height = height
+    this.objects = objects
   }
 
   validate() {
@@ -26,6 +28,7 @@ class Config {
       radius: this.radius,
       distance: this.distance,
       height: this.height,
+      objects: this.objects,
     })
   }
 }

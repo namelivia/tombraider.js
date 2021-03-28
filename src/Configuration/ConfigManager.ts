@@ -7,6 +7,7 @@ class ConfigManager {
       parseInt(data.radius),
       parseInt(data.distance),
       parseInt(data.height),
+      data.objects,
     )
     config.validate()
     return config
