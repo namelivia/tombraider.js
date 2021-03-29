@@ -10,7 +10,7 @@ class TombRaiderMenu {
   world: WorldApi
   item: ItemApi
 
-//TODO: In this case I believe an initialize method will be better
+  //TODO: In this case I believe an initialize method will be better
   constructor(containerId: string) {
     //TODO: Should this be responsability of the lib?
     var container = document.getElementById(containerId)
@@ -19,62 +19,51 @@ class TombRaiderMenu {
   }
 
   //TODO: This will probably go away
-  goToLink(url: string) {
+  goToLink = (url: string) => {
     window.location.href = url
   }
 
-  moveLeft() {
+  moveLeft = () => {
     this.item.selectNext()
   }
 
-  moveRight() {
+  moveRight = () => {
     this.item.selectPrevious()
   }
 
   /**
    * @deprecated Since version 0.2. Will be deleted in version 1.0. Use addItem instead.
    */
-  addModel(name: string, model: string, action: string, params: string) {
+  addModel = (name: string, model: string, action: string, params: string) => {
     this.addItem(name, model, action, params)
   }
 
-  addItem(name: string, model: string, action: string, params: string) {
+  addItem = (name: string, model: string, action: string, params: string) => {
     this.item.add(name, model, action, params)
   }
 
-  getSelectedName(): string {
-    return this.item.getSelectedName()
-  }
+  getSelectedName = (): string => this.item.getSelectedName()
+  getRadius = () => this.world.getRadius()
+  getCameraDistance = () => this.world.getCameraDistance()
+  getCameraHeight = () => this.world.getCameraHeight()
 
-  getRadius() {
-    return this.world.getRadius()
-  }
-
-  getCameraDistance() {
-    return this.world.getCameraDistance()
-  }
-
-  getCameraHeight() {
-    return this.world.getCameraHeight()
-  }
-
-  setRadius(radius: number) {
+  setRadius = (radius: number) => {
     this.world.setRadius(radius)
   }
 
-  setCameraHeight(height: number) {
+  setCameraHeight = (height: number) => {
     this.world.setCameraHeight(height)
   }
 
-  setCameraDistance(distance: number) {
+  setCameraDistance = (distance: number) => {
     this.world.setCameraDistance(distance)
   }
 
-  deleteSelected() {
-      this.item.deleteSelected()
+  deleteSelected = () => {
+    this.item.deleteSelected()
   }
 
-  setConfig(json: string) {
+  setConfig = (json: string) => {
     var config = this.configuration.load(json)
 
     this.world.setRadius(config.radius)
@@ -84,27 +73,26 @@ class TombRaiderMenu {
     this.item.addMany(config.objects)
   }
 
-  getConfig() {
+  getConfig = () => {
     return this.configuration.save(
-        this.world.getRadius(),
-        this.world.getCameraDistance(),
-        this.world.getCameraHeight(),
-        this.item.serialize()
+      this.world.getRadius(),
+      this.world.getCameraDistance(),
+      this.world.getCameraHeight(),
+      this.item.serialize(),
     )
   }
 
   //TODO: This is how I would start the animation loop
-  animate() {
+  animate = () => {
     console.log('Animation frame')
-    requestAnimationFrame(()=>this.animate())
+    requestAnimationFrame(() => this.animate())
   }
 
-    //And then the startup would be like:
-    /*
-     * let game = new Game();
-     * game.animate();
-     *
-     */
-
+  //And then the startup would be like:
+  /*
+   * let game = new Game();
+   * game.animate();
+   *
+   */
 }
 export default TombRaiderMenu

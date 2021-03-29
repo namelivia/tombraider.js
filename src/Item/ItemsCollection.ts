@@ -20,7 +20,12 @@ class ItemsCollection {
     this.items.splice(this.items.indexOf(item), 1)
   }
 
-  serialize = (): Array<{name: string, model: string, action:string, params: string}> => {
+  serialize = (): Array<{
+    name: string
+    model: string
+    action: string
+    params: string
+  }> => {
     return this.items.map(function (item) {
       return item.serialize()
     })

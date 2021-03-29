@@ -20,7 +20,7 @@ class Render {
   }
 
   getRenderer() {
-      return this.renderer
+    return this.renderer
   }
 
   initializeLighting() {

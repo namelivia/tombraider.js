@@ -1,36 +1,36 @@
 import Camera from './Camera'
 import Ring from './Ring'
 class World {
-    camera: Camera
-    ring: Ring
+  camera: Camera
+  ring: Ring
 
-    initialize() {
-        this.camera = new Camera()
-        this.ring = new Ring()
-        this.ring.setRadius(6000)
-        this.camera.setDistance(12000)
-        this.camera.setHeight(3000)
-    }
+  initialize() {
+    this.camera = new Camera()
+    this.ring = new Ring()
+    this.ring.setRadius(6000)
+    this.camera.setDistance(12000)
+    this.camera.setHeight(3000)
+  }
 
-    getCameraDistance = (): number => this.camera.getDistance()
-    getCameraHeight = (): number => this.camera.getHeight()
+  getCameraDistance = (): number => this.camera.getDistance()
+  getCameraHeight = (): number => this.camera.getHeight()
 
-    setCameraHeight = (height: number) => {
-        this.camera.setHeight(height)
-    }
+  setCameraHeight = (height: number) => {
+    this.camera.setHeight(height)
+  }
 
-    setCameraDistance = (distance: number) => {
-        this.camera.setDistance(distance)
-    }
+  setCameraDistance = (distance: number) => {
+    this.camera.setDistance(distance)
+  }
 
-    setRadius = (radius: number) => {
-        this.ring.setRadius(radius)
-    }
+  setRadius = (radius: number) => {
+    this.ring.setRadius(radius)
+  }
 
-    getRadius = () => this.ring.getRadius()
+  getRadius = () => this.ring.getRadius()
 
-    setItemsNumber = (itemsCount: number) => {
-        this.ring.setItemsNumber(itemsCount)
-    }
+  setItemsNumber = (itemsCount: number) => {
+    this.ring.setItemsNumber(itemsCount)
+  }
 }
 export default World

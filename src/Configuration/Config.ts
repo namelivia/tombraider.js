@@ -2,9 +2,24 @@ class Config {
   radius: number
   distance: number
   height: number
-  objects: Array<{name: string, model: string, action:string, params: string}>
+  objects: Array<{
+    name: string
+    model: string
+    action: string
+    params: string
+  }>
 
-  constructor(radius: number, distance: number, height: number, objects: Array<{name: string, model: string, action:string, params: string}>) {
+  constructor(
+    radius: number,
+    distance: number,
+    height: number,
+    objects: Array<{
+      name: string
+      model: string
+      action: string
+      params: string
+    }>,
+  ) {
     this.radius = radius
     this.distance = distance
     this.height = height
