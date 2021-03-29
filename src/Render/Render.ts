@@ -26,21 +26,18 @@ class Render {
     this.scene.remove(index)
   }
 
-  loadModel(path: string) {
-    throw 'Json loader is no loger supported'
-    //TODO: This format is no longer supported
-    //loader = new window.THREE.JSONLoader()
-    /*loader.load(
-          path,
-          (geometry, materials) => {
-            this.scene.add(
-                new THREE.Mesh(
-                    geometry,
-                    new THREE.MeshFaceMaterial(materials)
-                )
-            )
-          }
-    )*/
+  addModel(geometry: any, materials: any) {
+    this.scene.add(
+      new THREE.Mesh(
+        geometry,
+        //TODO: This was removed, I think this is how it works now
+        //new THREE.MeshFaceMaterial(materials)
+        new THREE.MeshBasicMaterial(materials),
+      ),
+    )
+    //TODO: Or it could also be
+    //var mesh = new THREE.Mesh(geometry, materials );
+    //Assuming materials is an array of materials.
   }
 
   placeCamera(x: number, y: number, z: number) {
