@@ -1,29 +1,32 @@
 import * as THREE from 'three'
 class Render {
-  renderer: any
-  //clock: any
-  scene: any
-  camera: any
-  loader: any
+  renderer: THREE.WebGLRenderer
+  //clock: THREE.Clock
+  scene: THREE.Scene
+  camera: THREE.PerspectiveCamera
 
-  constructor(width: number, height: number) {
+  constructor() {
     //this.clock = new Clock()
     this.scene = new THREE.Scene()
-    this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 100000)
+    this.camera = new THREE.PerspectiveCamera(50, 100 / 100, 1, 100000)
     this.scene.add(
       new THREE.AmbientLight(0xfddf98),
       new THREE.DirectionalLight(0xffffff),
     )
     this.renderer = new THREE.WebGLRenderer({ alpha: true })
+  }
+
+  resize = (width: number, height: number) => {
+    //TODO: Can I just modify the camera size?
+    this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 100000)
     //TODO: This is being hard to mock
     //this.renderer.setSize(width, height)
   }
 
-  //TODO: Here I should use definetly typed
   getRenderer = (): THREE.WebGLRenderer => this.renderer
 
   removeModel(index: number) {
-    this.scene.remove(index)
+    this.scene.remove(this.scene.getObjectById(index))
   }
 
   addModel(geometry: any, materials: any) {

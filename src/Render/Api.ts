@@ -6,12 +6,17 @@ class Api {
   render: Render
   loader: Loader
 
-  constructor(width: number, height: number) {
-    this.render = new Render(width, height)
+  constructor() {
+    this.render = new Render()
     this.loader = new Loader()
   }
 
   getRenderer = (): THREE.WebGLRenderer => this.render.getRenderer()
+  attachRenderer = (container: HTMLElement) => {
+    this.render.resize(container.offsetWidth, container.offsetHeight)
+    //TODO: This is being hard to mock
+    //container.appendChild(this.render.getRenderer())
+  }
   addModel = (path: string) => {
     //TODO: First whe load
     //const model = this.loader.load(path)

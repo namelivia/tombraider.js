@@ -16,13 +16,11 @@ class TombRaiderMenu {
     this.world = new WorldApi()
     this.item = new ItemApi()
     this.configuration = new ConfigurationApi()
+    this.render = new RenderApi()
 
-    //TODO: Should this be responsability of the lib?
     const container = document.getElementById(containerId)
     if (container) {
-      this.render = new RenderApi(container.offsetWidth, container.offsetHeight)
-      //TODO: This is beinig hard to mock
-      //container.appendChild(this.render.getRenderer())
+      this.render.attachRenderer(container)
     }
   }
 
