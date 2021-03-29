@@ -8,9 +8,7 @@ class Api {
     }
 
     //TODO: Typing this
-    getRenderer(): any {
-        return this.render.getRenderer()
-    }
+    getRenderer = (): any => this.render.getRenderer()
 }
 
 export default Api

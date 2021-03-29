@@ -12,31 +12,24 @@ class World {
         this.camera.setHeight(3000)
     }
 
-    getCameraDistance(): number {
-        return this.camera.getDistance()
-    }
+    getCameraDistance = (): number => this.camera.getDistance()
+    getCameraHeight = (): number => this.camera.getHeight()
 
-    getCameraHeight(): number {
-        return this.camera.getHeight()
-    }
-
-    setCameraHeight(height: number) {
+    setCameraHeight = (height: number) => {
         this.camera.setHeight(height)
     }
 
-    setCameraDistance(distance: number) {
+    setCameraDistance = (distance: number) => {
         this.camera.setDistance(distance)
     }
 
-    setRadius(radius: number) {
+    setRadius = (radius: number) => {
         this.ring.setRadius(radius)
     }
 
-    getRadius() {
-        return this.ring.getRadius()
-    }
+    getRadius = () => this.ring.getRadius()
 
-    setItemsNumber(itemsCount: number) {
+    setItemsNumber = (itemsCount: number) => {
         this.ring.setItemsNumber(itemsCount)
     }
 }

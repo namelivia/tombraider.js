@@ -4,14 +4,14 @@ class Config {
   height: number
   objects: Array<{name: string, model: string, action:string, params: string}>
 
-        constructor(radius: number, distance: number, height: number, objects: Array<{name: string, model: string, action:string, params: string}>) {
+  constructor(radius: number, distance: number, height: number, objects: Array<{name: string, model: string, action:string, params: string}>) {
     this.radius = radius
     this.distance = distance
     this.height = height
     this.objects = objects
   }
 
-  validate() {
+  validate = () => {
     if (isNaN(this.radius)) {
       throw 'Invalid configuration: invalid radius'
     }
@@ -23,7 +23,7 @@ class Config {
     }
   }
 
-  save(): string {
+  save = (): string => {
     return JSON.stringify({
       radius: this.radius,
       distance: this.distance,

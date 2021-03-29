@@ -9,33 +9,13 @@ class Api {
         this.world.initialize()
     }
 
-    getCameraDistance(): number {
-        return this.world.getCameraDistance()
-    }
-
-    getCameraHeight(): number {
-        return this.world.getCameraHeight()
-    }
-
-    setCameraDistance(distance: number) {
-        return this.world.setCameraDistance(distance)
-    }
-
-    setCameraHeight(height: number) {
-        return this.world.setCameraHeight(height)
-    }
-
-    setRadius(radius: number) {
-        return this.world.setRadius(radius)
-    }
-
-    getRadius(): number {
-        return this.world.getRadius()
-    }
-
-    setItemsNumber(itemsCount: number) {
-        return this.world.setItemsNumber(itemsCount)
-    }
+    getCameraDistance = (): number => this.world.getCameraDistance()
+    getCameraHeight = (): number => this.world.getCameraHeight()
+    setCameraDistance = (distance: number) => this.world.setCameraDistance(distance)
+    setCameraHeight = (height: number) => this.world.setCameraHeight(height)
+    setRadius = (radius: number) => this.world.setRadius(radius)
+    getRadius = (): number => this.world.getRadius()
+    setItemsNumber = (itemsCount: number) => this.world.setItemsNumber(itemsCount)
 }
 
 export default Api

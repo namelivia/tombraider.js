@@ -19,17 +19,15 @@ class Item {
     this.model = model
   }
 
-  getName(): string {
-    return this.name
-  }
+  getName = (): string => this.name
 
-  serialize(): {name: string, model: string, action:string, params: string} {
+  serialize = (): {name: string, model: string, action:string, params: string} => {
     return {
-      //index: this.index, TODO: I may need to add the index here
-      name: this.name,
-      action: this.action,
-      params: this.params,
-      model: this.model,
+        //index: this.index, TODO: I may need to add the index here
+        name: this.name,
+        action: this.action,
+        params: this.params,
+        model: this.model,
     }
   }
 }
