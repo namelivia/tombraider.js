@@ -1,4 +1,3 @@
-//import Scene from './Scene'
 import { default as ConfigurationApi } from './Configuration/Api'
 import { default as WorldApi } from './World/Api'
 import { default as ItemApi } from './Item/Api'
@@ -91,7 +90,9 @@ class TombRaiderMenu {
   //TODO: This is how I would start the animation loop
   animate = () => {
     console.log('Animation frame')
+    this.render.update()
     requestAnimationFrame(() => this.animate())
+    //here I would have to update and render
   }
 
   //And then the startup would be like:
