@@ -1,4 +1,4 @@
-import { default as TombRaiderMenu } from './tombraidermenu'
+import { default as TombRaiderMenu } from './TombRaiderMenu'
 import * as THREE from 'three'
 jest.mock('three')
 
