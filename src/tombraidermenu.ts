@@ -2,16 +2,20 @@
 import { default as ConfigurationApi } from './Configuration/Api'
 import { default as WorldApi } from './World/Api'
 import { default as ItemApi } from './Item/Api'
+import { default as RenderApi } from './Render/Api'
 
 class TombRaiderMenu {
-  //scene: Scene
+  render: RenderApi
   configuration: ConfigurationApi
   world: WorldApi
   item: ItemApi
 
+//TODO: In this case I believe an initialize method will be better
   constructor(containerId: string) {
-    //TODO: width and height
-    //this.scene = new Scene(200, 300)
+    //TODO: Should this be responsability of the lib?
+    var container = document.getElementById(containerId)
+    this.render = new RenderApi(container.offsetWidth, container.offsetHeight)
+    container.appendChild(this.render.getRenderer())
   }
 
   //TODO: This will probably go away
@@ -88,5 +92,19 @@ class TombRaiderMenu {
         this.item.serialize()
     )
   }
+
+  //TODO: This is how I would start the animation loop
+  animate() {
+    console.log('Animation frame')
+    requestAnimationFrame(()=>this.animate())
+  }
+
+    //And then the startup would be like:
+    /*
+     * let game = new Game();
+     * game.animate();
+     *
+     */
+
 }
 export default TombRaiderMenu
