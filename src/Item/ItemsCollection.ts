@@ -8,9 +8,7 @@ class ItemsCollection {
     this._selected = 0
   }
 
-  empty(): boolean {
-    return this.items.length === 0
-  }
+  empty = (): boolean => this.items.length === 0
 
   count(): number {
     return this.items.length
