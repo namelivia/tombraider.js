@@ -1,3 +1,4 @@
+import * as THREE from 'three'
 import Render from './Render'
 
 class Api {
@@ -8,7 +9,7 @@ class Api {
   }
 
   //TODO: Typing this
-  getRenderer = (): any => this.render.getRenderer()
+  getRenderer = (): THREE.WebGLRenderer => this.render.getRenderer()
 }
 
 export default Api

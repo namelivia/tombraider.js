@@ -20,7 +20,7 @@ class Render {
   }
 
   //TODO: Here I should use definetly typed
-  getRenderer = () /*:WebGLRenderer*/ => this.renderer
+  getRenderer = (): THREE.WebGLRenderer => this.renderer
 
   removeModel(index: number) {
     this.scene.remove(index)
@@ -31,12 +31,15 @@ class Render {
     //TODO: This format is no longer supported
     //loader = new window.THREE.JSONLoader()
     /*loader.load(
-      path,
-      function (geometry, materials) {
-        let material = new window.THREE.MeshFaceMaterial(materials)
-        let model = new window.THREE.Mesh(geometry, material)
-        this.scene.add(model)
-      }.bind(this),
+          path,
+          (geometry, materials) => {
+            this.scene.add(
+                new THREE.Mesh(
+                    geometry,
+                    new THREE.MeshFaceMaterial(materials)
+                )
+            )
+          }
     )*/
   }
 
