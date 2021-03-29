@@ -12,6 +12,11 @@ class TombRaiderMenu {
 
   //TODO: In this case I believe an initialize method will be better
   constructor(containerId: string) {
+    //TODO: I'll see what I do with these constructors
+    this.world = new WorldApi()
+    this.item = new ItemApi()
+    this.configuration = new ConfigurationApi()
+
     //TODO: Should this be responsability of the lib?
     const container = document.getElementById(containerId)
     if (container) {
