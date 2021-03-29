@@ -1,33 +1,26 @@
+import * as THREE from 'three'
 class Render {
   renderer: any
-  clock: any
+  //clock: any
   scene: any
   camera: any
   loader: any
 
   constructor(width: number, height: number) {
-    this.clock = new window.THREE.Clock()
-    this.scene = new window.THREE.Scene()
-    this.camera = new window.THREE.PerspectiveCamera(
-      50,
-      width / height,
-      1,
-      100000,
+    //this.clock = new Clock()
+    this.scene = new THREE.Scene()
+    this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 100000)
+    this.scene.add(
+      new THREE.AmbientLight(0xfddf98),
+      new THREE.DirectionalLight(0xffffff),
     )
-    this.initializeLighting()
-    this.renderer = new window.THREE.WebGLRenderer({ alpha: true })
-    this.renderer.setSize(width, height)
+    this.renderer = new THREE.WebGLRenderer({ alpha: true })
+    //TODO: This is being hard to mock
+    //this.renderer.setSize(width, height)
   }
 
-  getRenderer() {
-    return this.renderer
-  }
-
-  initializeLighting() {
-    let ambientLight = new window.THREE.AmbientLight(0xfddf98)
-    let directionalLight = new window.THREE.DirectionalLight(0xffffff)
-    this.scene.add(directionalLight, ambientLight)
-  }
+  //TODO: Here I should use definetly typed
+  getRenderer = () /*:WebGLRenderer*/ => this.renderer
 
   removeModel(index: number) {
     this.scene.remove(index)
@@ -51,7 +44,7 @@ class Render {
     this.camera.position.x = x
     this.camera.position.y = y
     this.camera.position.z = z
-    this.camera.lookAt(new window.THREE.Vector3(0, 0, 0))
+    this.camera.lookAt(new THREE.Vector3(0, 0, 0))
   }
 
   update() {

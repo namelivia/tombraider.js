@@ -1,8 +1,11 @@
 import { default as TombRaiderMenu } from './tombraidermenu'
+import * as THREE from 'three'
+jest.mock('three')
 
 describe('TombRaiderMenu', () => {
   test('Test menu', () => {
-    const menu = new TombRaiderMenu()
+    document.body.innerHTML = '<div id="test-div" />'
+    const menu = new TombRaiderMenu('test-div')
     //Loading a configuration
     var newConfig =
       '{"objects":[{"name":"item1","action":"link","params":"asdfasdf","model":"models/chest/chest.json"},{"name":"item2","action":"link","params":"asdfasdfsadf","model":"models/chest/chest.json"},{"name":"item3","action":"link","params":"asdfasdf","model":"models/chest/chest.json"}],"distance":"17800","height":"2600","radius":"10600"}'
