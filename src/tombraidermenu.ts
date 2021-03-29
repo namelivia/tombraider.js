@@ -13,9 +13,11 @@ class TombRaiderMenu {
   //TODO: In this case I believe an initialize method will be better
   constructor(containerId: string) {
     //TODO: Should this be responsability of the lib?
-    var container = document.getElementById(containerId)
-    this.render = new RenderApi(container.offsetWidth, container.offsetHeight)
-    container.appendChild(this.render.getRenderer())
+    const container = document.getElementById(containerId)
+    if (container) {
+      this.render = new RenderApi(container.offsetWidth, container.offsetHeight)
+      container.appendChild(this.render.getRenderer())
+    }
   }
 
   //TODO: This will probably go away
