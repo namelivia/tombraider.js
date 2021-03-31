@@ -4,7 +4,7 @@ import { default as ItemApi } from './Item/Api'
 import { default as RenderApi } from './Render/Api'
 
 class TombRaiderMenu {
-  render: RenderApi
+  rendering: RenderApi
   configuration: ConfigurationApi
   world: WorldApi
   item: ItemApi
@@ -15,11 +15,11 @@ class TombRaiderMenu {
     this.world = new WorldApi()
     this.item = new ItemApi()
     this.configuration = new ConfigurationApi()
-    this.render = new RenderApi()
+    this.rendering = new RenderApi()
 
     const container = document.getElementById(containerId)
     if (container) {
-      this.render.attachRenderer(container)
+      this.rendering.attachRenderer(container)
     }
   }
 
@@ -45,7 +45,7 @@ class TombRaiderMenu {
 
   addItem = (name: string, model: string, action: string, params: string) => {
     this.item.add(name, model, action, params)
-    this.render.addModel(model)
+    this.rendering.addModel(model)
   }
 
   getSelectedName = (): string => this.item.getSelectedName()
@@ -93,13 +93,13 @@ class TombRaiderMenu {
   }
 
   private animate = () => {
-    //This is rendering, but its missing placing stuff every loop
-    this.render.placeCamera(
+    this.rendering.placeCamera(
       this.world.getCameraX(),
       this.world.getCameraY(),
       this.world.getCameraZ(),
     )
-    this.render.update()
+    //This is placing camera, but its missing placing items every loop
+    this.rendering.update()
   }
 }
 export default TombRaiderMenu
