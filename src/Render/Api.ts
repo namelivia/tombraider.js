@@ -20,14 +20,22 @@ class Api {
     this.render.update()
   }
 
-  placeCamera(x: number, y: number, z: number) {
+  placeCamera = (x: number, y: number, z: number) => {
     this.render.placeCamera(x, y, z)
   }
 
-  addModel = async (path: string) => {
+  placeItem = (id: number, x: number, z: number) => {
+    this.render.placeItem(id, x, z)
+  }
+
+  rotateItem = (id: number) => {
+    this.render.rotateItem(id)
+  }
+
+  addModel = async (path: string): Promise<number> => {
     try {
       const model = await this.loader.load(path)
-      this.render.addModel(model.scene)
+      return this.render.addModel(model.scene)
     } catch {
       console.log(`Error loading model: ${path}`)
     }

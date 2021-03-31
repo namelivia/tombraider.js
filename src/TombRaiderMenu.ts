@@ -43,9 +43,15 @@ class TombRaiderMenu {
     this.addItem(name, model, action, params)
   }
 
-  addItem = (name: string, model: string, action: string, params: string) => {
-    this.item.add(name, model, action, params)
-    this.rendering.addModel(model)
+  addItem = async (
+    name: string,
+    model: string,
+    action: string,
+    params: string,
+  ) => {
+    let modelId = await this.rendering.addModel(model)
+    let itemsCount = this.item.add(name, model, action, params, modelId)
+    this.world.setItemsNumber(itemsCount)
   }
 
   getSelectedName = (): string => this.item.getSelectedName()
@@ -88,18 +94,22 @@ class TombRaiderMenu {
     )
   }
 
-  start = () => {
-    requestAnimationFrame(() => this.animate())
-  }
-
-  private animate = () => {
+  animate = () => {
+    this.item.modelIds().forEach((id) => {
+      this.rendering.placeItem(
+        id,
+        this.world.getItemX(id),
+        this.world.getItemZ(id),
+      )
+    })
+    this.rendering.rotateItem(this.item.getSelectedId())
     this.rendering.placeCamera(
       this.world.getCameraX(),
       this.world.getCameraY(),
       this.world.getCameraZ(),
     )
-    //This is placing camera, but its missing placing items every loop
     this.rendering.update()
+    requestAnimationFrame(() => this.animate())
   }
 }
 export default TombRaiderMenu

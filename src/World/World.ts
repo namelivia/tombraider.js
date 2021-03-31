@@ -37,5 +37,8 @@ class World {
   setItemsNumber = (itemsCount: number) => {
     this.ring.setItemsNumber(itemsCount)
   }
+
+  getItemX = (index: number): number => this.ring.getItemX(index)
+  getItemZ = (index: number): number => this.ring.getItemZ(index)
 }
 export default World

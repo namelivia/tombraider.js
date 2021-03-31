@@ -4,6 +4,8 @@ class Item {
   action: string
   params: string
   model: string
+  //TODO: There is probably some duplication between modelId and index
+  modelId: number
 
   constructor(
     index: number,
@@ -11,12 +13,14 @@ class Item {
     action: string,
     params: string,
     model: string,
+    modelId: number,
   ) {
     this.index = index
     this.name = name
     this.action = action
     this.params = params
     this.model = model
+    this.modelId = modelId
   }
 
   getName = (): string => this.name

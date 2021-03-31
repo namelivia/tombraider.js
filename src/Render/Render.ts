@@ -4,11 +4,13 @@ class Render {
   //clock: THREE.Clock
   scene: THREE.Scene
   camera: THREE.PerspectiveCamera
+  objectIndex: number
 
   constructor() {
     //this.clock = new Clock()
     this.scene = new THREE.Scene()
     this.camera = new THREE.PerspectiveCamera(50, 100 / 100, 1, 100000)
+    this.objectIndex = -1
     this.scene.add(
       new THREE.AmbientLight(0xfddf98),
       new THREE.DirectionalLight(0xffffff),
@@ -26,11 +28,14 @@ class Render {
   getRenderer = (): THREE.WebGLRenderer => this.renderer
 
   removeModel(index: number) {
+    //TODO: Beware! Same 3d models have same ids. indexes are better
     this.scene.remove(this.scene.getObjectById(index))
   }
 
-  addModel(model: THREE.Scene) {
-    this.scene.add(model)
+  addModel = (model: THREE.Scene): number => {
+    this.scene.add(model).id
+    this.objectIndex += 1
+    return this.objectIndex
   }
 
   placeCamera(x: number, y: number, z: number) {
@@ -38,6 +43,17 @@ class Render {
     this.camera.position.y = y
     this.camera.position.z = z
     this.camera.lookAt(new THREE.Vector3(0, 0, 0))
+  }
+
+  placeItem(id: number, x: number, z: number) {
+    //ID + 2 because it also contains the two light sources from the constructor
+    this.scene.children[id + 2].position.x = x
+    this.scene.children[id + 2].position.z = z
+  }
+
+  rotateItem(id: number) {
+    //ID + 2 because it also contains the two light sources from the constructor
+    this.scene.children[id + 2].rotation.y += 0.01
   }
 
   update() {

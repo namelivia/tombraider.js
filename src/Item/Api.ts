@@ -25,7 +25,14 @@ class Api {
     }>,
   ) => {
     items.forEach((item) =>
-      this.add(item.name, item.model, item.action, item.params),
+      //TODO: modelId is missing
+      this.add(
+        item.name,
+        item.model,
+        item.action,
+        item.params,
+        'model-id-missing',
+      ),
     )
   }
 
@@ -36,18 +43,38 @@ class Api {
     params: string
   }> => this.collection.serialize()
 
-  add = (name: string, model: string, action: string, params: string) => {
-    let newItem = new Item(this.collection.count(), name, model, action, params)
+  add = (
+    name: string,
+    model: string,
+    action: string,
+    params: string,
+    modelId: number,
+  ) => {
+    let newItem = new Item(
+      this.collection.count(),
+      name,
+      model,
+      action,
+      params,
+      modelId,
+    )
     this.collection.add(newItem)
+    return this.collection.count()
+  }
 
-    //TODO: Think about the communication here, maybe return
-    //Now the ring needs to update
-    //this.world.setItemsNumber(this.items.count())
+  modelIds = (): Array<number> => {
+    return this.collection.modelIds()
   }
 
   getSelectedName = (): string => {
     if (this.collection.selected()) {
       return this.collection.selected().name
+    }
+  }
+
+  getSelectedId = (): number => {
+    if (this.collection.selected()) {
+      return this.collection.selected().modelId
     }
   }
 
