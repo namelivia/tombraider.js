@@ -7,12 +7,14 @@
 		<div id="test" style="width:800;height:600;background-color:black" />
         <script type="text/javascript">
 			var menu = TombRaiderMenu("test")
-			menu.addItem('shotgun0', 'http://localhost:8000/shotgun.gltf', undefined, undefined)
-			menu.addItem('shotgun1', 'http://localhost:8000/shotgun.gltf', undefined, undefined)
-			menu.addItem('shotgun2', 'http://localhost:8000/shotgun.gltf', undefined, undefined)
-			menu.addItem('shotgun3', 'http://localhost:8000/shotgun.gltf', undefined, undefined)
-			menu.addItem('shotgun4', 'http://localhost:8000/shotgun.gltf', undefined, undefined)
-
+            Promise.all([
+                menu.addItem('shotgun0', 'http://localhost:8000/shotgun.gltf', undefined, undefined),
+                menu.addItem('shotgun0', 'http://localhost:8000/shotgun.gltf', undefined, undefined),
+                menu.addItem('shotgun0', 'http://localhost:8000/shotgun.gltf', undefined, undefined),
+                menu.addItem('shotgun0', 'http://localhost:8000/shotgun.gltf', undefined, undefined),
+            ]).then(function () {
+                menu.animate()
+            })
 			menu.setRadius(2800);
 			menu.setCameraHeight(1200);
 			menu.setCameraDistance(5800);
