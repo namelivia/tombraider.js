@@ -50,8 +50,10 @@ class TombRaiderMenu {
     params: string,
   ) => {
     let modelId = await this.rendering.addModel(model)
-    let itemsCount = this.item.add(name, model, action, params, modelId)
-    this.world.setItemsNumber(itemsCount)
+    if (modelId) {
+      let itemsCount = this.item.add(name, model, action, params, modelId)
+      this.world.setItemsNumber(itemsCount)
+    }
   }
 
   getSelectedName = (): string => this.item.getSelectedName()

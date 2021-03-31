@@ -32,12 +32,13 @@ class Api {
     this.render.rotateItem(id)
   }
 
-  addModel = async (path: string): Promise<number> => {
+  addModel = async (path: string): Promise<number | null> => {
     try {
       const model = await this.loader.load(path)
       return this.render.addModel(model.scene)
     } catch {
       console.log(`Error loading model: ${path}`)
+      return null
     }
   }
 }

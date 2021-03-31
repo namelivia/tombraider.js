@@ -31,7 +31,7 @@ class Api {
         item.model,
         item.action,
         item.params,
-        'model-id-missing',
+        -1, //modelId is missing here
       ),
     )
   }
