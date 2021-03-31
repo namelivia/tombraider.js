@@ -1,4 +1,3 @@
-import * as THREE from 'three'
 import Render from './Render'
 import Loader from './Loader'
 
@@ -14,18 +13,20 @@ class Api {
   attachRenderer = (container: HTMLElement) => {
     this.render.resize(container.offsetWidth, container.offsetHeight)
     //TODO: This is being hard to mock
-    //container.appendChild(this.render.getRenderer())
+    container.appendChild(this.render.getRenderer().domElement)
   }
 
   update = () => {
     this.render.update()
   }
 
-  addModel = (path: string) => {
-    //TODO: First whe load
-    //const model = this.loader.load(path)
-    //TODO: Then we add
-    //this.render.addModel(model.geometry, model.materials)
+  addModel = async (path: string) => {
+    try {
+      const model = await this.loader.load(path)
+      this.render.addModel(model.scene)
+    } catch {
+      console.log(`Error loading model: ${path}`)
+    }
   }
 }
 

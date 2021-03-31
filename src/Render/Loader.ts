@@ -1,17 +1,16 @@
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 class Loader {
-  //TODO: This format is no longer supported
-  //loader: any
+  loader: GLTFLoader
 
   constructor() {
-    //TODO: This format is no longer supported
-    //this.loader = new THREE.JSONLoader()
+    this.loader = new GLTFLoader()
   }
 
-  //TODO: I suppose this will be async
-  load = /*async*/ (path: string): { geometry: any; materials: any } => {
-    //TODO: This format is no longer supported
-    throw 'Json loader is no loger supported'
-    //return await this.loader.load(path)
+  //TODO: Type this properly. Type === GLFT
+  load = (path: string): Promise<any> => {
+    return new Promise((resolve, reject) => {
+      this.loader.load(path, (data) => resolve(data), null, reject)
+    })
   }
 }
 export default Loader

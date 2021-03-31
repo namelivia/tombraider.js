@@ -45,6 +45,7 @@ class TombRaiderMenu {
 
   addItem = (name: string, model: string, action: string, params: string) => {
     this.item.add(name, model, action, params)
+    this.render.addModel(model)
   }
 
   getSelectedName = (): string => this.item.getSelectedName()

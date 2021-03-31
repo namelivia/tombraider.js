@@ -20,7 +20,7 @@ class Render {
     //TODO: Can I just modify the camera size? It seems I cannot
     this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 100000)
     //TODO: This is being hard to mock
-    //this.renderer.setSize(width, height)
+    this.renderer.setSize(width, height)
   }
 
   getRenderer = (): THREE.WebGLRenderer => this.renderer
@@ -29,18 +29,8 @@ class Render {
     this.scene.remove(this.scene.getObjectById(index))
   }
 
-  addModel(geometry: any, materials: any) {
-    this.scene.add(
-      new THREE.Mesh(
-        geometry,
-        //TODO: This was removed, I think this is how it works now
-        //new THREE.MeshFaceMaterial(materials)
-        new THREE.MeshBasicMaterial(materials),
-      ),
-    )
-    //TODO: Or it could also be
-    //var mesh = new THREE.Mesh(geometry, materials );
-    //Assuming materials is an array of materials.
+  addModel(model: THREE.Scene) {
+    this.scene.add(model)
   }
 
   placeCamera(x: number, y: number, z: number) {
