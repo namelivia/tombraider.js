@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+		<script type="text/javascript" src="../dist/tombraider.js-v0.0.1.min.js"></script>
+    </head>
+    <body>
+		<div id="test" style="width:800;height:600;background-color:black" />
+        <script type="text/javascript">
+			var menu = TombRaiderMenu("test")
+			menu.addItem('shotgun', 'http://localhost:8000/shotgun.gltf', undefined, undefined)
+			menu.addItem('shotgun', 'http://localhost:8000/shotgun.gltf', undefined, undefined)
+			menu.addItem('shotgun', 'http://localhost:8000/shotgun.gltf', undefined, undefined)
+			menu.addItem('shotgun', 'http://localhost:8000/shotgun.gltf', undefined, undefined)
+			menu.addItem('shotgun', 'http://localhost:8000/shotgun.gltf', undefined, undefined)
+
+			menu.setRadius(2800);
+			menu.setCameraHeight(1200);
+			menu.setCameraDistance(5800);
+
+			document.addEventListener('keydown', function(e) {
+			  if(e.keyCode == 37) {
+				menu.moveLeft();
+				console.log(menu.getSelectedName());
+			  }
+			  else if(e.keyCode == 39) {
+				menu.moveRight();
+				console.log(menu.getSelectedName());
+			  }
+			  else if(e.keyCode == 13) {
+				menu.action();
+			  }
+			});
+        </script>
+    </body>
+</html>
