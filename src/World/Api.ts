@@ -16,6 +16,11 @@ class Api {
   setRadius = (radius: number) => this.world.setRadius(radius)
   getRadius = (): number => this.world.getRadius()
   setItemsNumber = (itemsCount: number) => this.world.setItemsNumber(itemsCount)
+
+  //TODO: This is probably unecessary complexity. (Use a type? and just one function?)
+  getCameraX = (): number => this.world.getCameraX()
+  getCameraY = (): number => this.world.getCameraY()
+  getCameraZ = (): number => this.world.getCameraZ()
 }
 
 export default Api

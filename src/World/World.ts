@@ -19,6 +19,11 @@ class World {
     this.camera.setHeight(height)
   }
 
+  //TODO: This is probably unecessary complexity. (Use a type? and just one function?)
+  getCameraX = (): number => this.camera.getX()
+  getCameraY = (): number => this.camera.getY()
+  getCameraZ = (): number => this.camera.getZ()
+
   setCameraDistance = (distance: number) => {
     this.camera.setDistance(distance)
   }

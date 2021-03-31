@@ -88,19 +88,18 @@ class TombRaiderMenu {
     )
   }
 
-  //TODO: This is how I would start the animation loop
-  animate = () => {
-    console.log('Animation frame')
-    this.render.update()
+  start = () => {
     requestAnimationFrame(() => this.animate())
-    //here I would have to update and render
   }
 
-  //And then the startup would be like:
-  /*
-   * let game = new Game();
-   * game.animate();
-   *
-   */
+  private animate = () => {
+    //This is rendering, but its missing placing stuff every loop
+    this.render.placeCamera(
+      this.world.getCameraX(),
+      this.world.getCameraY(),
+      this.world.getCameraZ(),
+    )
+    this.render.update()
+  }
 }
 export default TombRaiderMenu

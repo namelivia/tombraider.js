@@ -20,6 +20,10 @@ class Api {
     this.render.update()
   }
 
+  placeCamera(x: number, y: number, z: number) {
+    this.render.placeCamera(x, y, z)
+  }
+
   addModel = async (path: string) => {
     try {
       const model = await this.loader.load(path)
