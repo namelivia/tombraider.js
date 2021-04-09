@@ -97,6 +97,7 @@ class TombRaiderMenu {
   }
 
   animate = () => {
+    //Place items
     this.item.modelIds().forEach((id) => {
       this.rendering.placeItem(
         id,
@@ -104,12 +105,19 @@ class TombRaiderMenu {
         this.world.getItemZ(id),
       )
     })
+
+    //Rotate selected item
     this.rendering.rotateItem(this.item.getSelectedId())
+
+    //Place camera
+    this.world.updateCameraAngle(this.item.getSelectedId())
     this.rendering.placeCamera(
       this.world.getCameraX(),
       this.world.getCameraY(),
       this.world.getCameraZ(),
     )
+
+    //Update rendering
     this.rendering.update()
     requestAnimationFrame(() => this.animate())
   }

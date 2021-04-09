@@ -23,6 +23,8 @@ class World {
   getCameraX = (): number => this.camera.getX()
   getCameraY = (): number => this.camera.getY()
   getCameraZ = (): number => this.camera.getZ()
+  updateCameraAngle = (index: number) =>
+    this.camera.updateAngle(this.ring.getSeparation(), index)
 
   setCameraDistance = (distance: number) => {
     this.camera.setDistance(distance)

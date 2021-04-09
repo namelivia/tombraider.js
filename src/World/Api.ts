@@ -21,6 +21,7 @@ class Api {
   getCameraX = (): number => this.world.getCameraX()
   getCameraY = (): number => this.world.getCameraY()
   getCameraZ = (): number => this.world.getCameraZ()
+  updateCameraAngle = (index: number) => this.world.updateCameraAngle(index)
 
   getItemX = (index: number): number => this.world.getItemX(index)
   getItemZ = (index: number): number => this.world.getItemZ(index)
