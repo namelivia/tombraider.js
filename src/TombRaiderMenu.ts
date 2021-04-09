@@ -2,12 +2,14 @@ import { default as ConfigurationApi } from './Configuration/Api'
 import { default as WorldApi } from './World/Api'
 import { default as ItemApi } from './Item/Api'
 import { default as RenderApi } from './Render/Api'
+import { default as ActionsApi } from './Actions/Api'
 
 class TombRaiderMenu {
   rendering: RenderApi
   configuration: ConfigurationApi
   world: WorldApi
   item: ItemApi
+  actions: ActionsApi
 
   //TODO: In this case I believe an initialize method will be better
   constructor(containerId: string) {
@@ -52,6 +54,7 @@ class TombRaiderMenu {
     let modelId = await this.rendering.addModel(model)
     if (modelId !== null) {
       let itemsCount = this.item.add(name, model, action, params, modelId)
+      //TODO: Add the action and params here
       this.world.setItemsNumber(itemsCount)
     }
   }
