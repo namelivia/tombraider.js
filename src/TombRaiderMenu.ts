@@ -110,7 +110,7 @@ class TombRaiderMenu {
     this.rendering.rotateItem(this.item.getSelectedId())
 
     //Place camera
-    this.world.updateCameraAngle(this.item.getSelectedId())
+    this.world.updateCameraAngle(this.item.getSelectedRotate())
     this.rendering.placeCamera(
       this.world.getCameraX(),
       this.world.getCameraY(),

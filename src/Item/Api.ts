@@ -78,6 +78,8 @@ class Api {
     }
   }
 
+  getSelectedRotate = (): number => this.collection.getSelectedRotate()
+
   deleteSelected = () => {
     let selectedObject = this.collection.selected()
     this.collection.remove(selectedObject)

@@ -2,10 +2,12 @@ import Item from './Item'
 class ItemsCollection {
   items: Array<Item>
   _selected: number
+  selectedRotate: number
 
   constructor() {
     this.items = []
     this._selected = 0
+    this.selectedRotate = -1
   }
 
   empty = (): boolean => this.items.length === 0
@@ -22,6 +24,8 @@ class ItemsCollection {
 
   modelIds = (): Array<number> => this.items.map((item) => item.modelId)
 
+  getSelectedRotate = (): number => this.selectedRotate
+
   serialize = (): Array<{
     name: string
     model: string
@@ -36,8 +40,8 @@ class ItemsCollection {
   select = (direction: number) => {
     if (!this.empty()) {
       let itemsCount = this.count()
-      this._selected =
-        (this._selected + (direction % itemsCount) + itemsCount) % itemsCount
+      this.selectedRotate = this.selectedRotate + direction
+      this._selected = (this._selected + direction + itemsCount) % itemsCount
     }
   }
 }
