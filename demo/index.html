@@ -8,10 +8,11 @@
         <script type="text/javascript">
 			var menu = TombRaiderMenu("test")
             Promise.all([
-                menu.addItem('shotgun0', 'http://localhost:8000/shotgun.gltf', undefined, undefined),
-                menu.addItem('shotgun1', 'http://localhost:8000/shotgun.gltf', undefined, undefined),
-                menu.addItem('shotgun2', 'http://localhost:8000/shotgun.gltf', undefined, undefined),
-                menu.addItem('shotgun3', 'http://localhost:8000/shotgun.gltf', undefined, undefined),
+                menu.addItem('shotgun0', 'http://localhost:8000/shotgun.gltf','link','http://skateistan.org'),
+                menu.addItem('shotgun1', 'http://localhost:8000/shotgun.gltf','link','http://skateistan.org'),
+                menu.addItem('shotgun2', 'http://localhost:8000/shotgun.gltf','link','http://skateistan.org'),
+                menu.addItem('shotgun3', 'http://localhost:8000/shotgun.gltf','link','http://skateistan.org'),
+                menu.addItem('shotgun4', 'http://localhost:8000/shotgun.gltf','link','http://skateistan.org'),
             ]).then(function () {
                 menu.animate()
             })

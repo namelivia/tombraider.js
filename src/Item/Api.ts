@@ -72,6 +72,18 @@ class Api {
     }
   }
 
+  getSelectedAction = (): string => {
+    if (this.collection.selected()) {
+      return this.collection.selected().action
+    }
+  }
+
+  getSelectedParams = (): string => {
+    if (this.collection.selected()) {
+      return this.collection.selected().params
+    }
+  }
+
   getSelectedId = (): number => {
     if (this.collection.selected()) {
       return this.collection.selected().modelId

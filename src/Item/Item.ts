@@ -10,16 +10,16 @@ class Item {
   constructor(
     index: number,
     name: string,
+    model: string,
     action: string,
     params: string,
-    model: string,
     modelId: number,
   ) {
     this.index = index
     this.name = name
+    this.model = model
     this.action = action
     this.params = params
-    this.model = model
     this.modelId = modelId
   }
 

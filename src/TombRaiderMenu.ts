@@ -18,6 +18,7 @@ class TombRaiderMenu {
     this.item = new ItemApi()
     this.configuration = new ConfigurationApi()
     this.rendering = new RenderApi()
+    this.actions = new ActionsApi()
 
     const container = document.getElementById(containerId)
     if (container) {
@@ -96,6 +97,17 @@ class TombRaiderMenu {
       this.world.getCameraDistance(),
       this.world.getCameraHeight(),
       this.item.serialize(),
+    )
+  }
+
+  action = () => {
+    let event = new CustomEvent('action', {
+      detail: { selected: this.item.getSelectedId() },
+    })
+    document.dispatchEvent(event)
+    this.actions.execute(
+      this.item.getSelectedAction(),
+      this.item.getSelectedParams(),
     )
   }
 
