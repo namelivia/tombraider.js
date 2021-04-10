@@ -4,7 +4,7 @@
 		<script type="text/javascript" src="../dist/tombraider.js-v0.0.1.min.js"></script>
     </head>
     <body>
-		<div id="test" style="width:800;height:600;background-color:black" />
+		<div id="test" style="width:800;height:600;background-color:red" />
         <script type="text/javascript">
 			var menu = TombRaiderMenu("test")
             Promise.all([
@@ -12,13 +12,12 @@
                 menu.addItem('shotgun1', 'http://localhost:8000/shotgun.gltf','link','http://skateistan.org'),
                 menu.addItem('shotgun2', 'http://localhost:8000/shotgun.gltf','link','http://skateistan.org'),
                 menu.addItem('shotgun3', 'http://localhost:8000/shotgun.gltf','link','http://skateistan.org'),
-                menu.addItem('shotgun4', 'http://localhost:8000/shotgun.gltf','link','http://skateistan.org'),
             ]).then(function () {
                 menu.animate()
             })
-			menu.setRadius(2800);
-			menu.setCameraHeight(1200);
-			menu.setCameraDistance(5800);
+			menu.setRadius(5);
+			menu.setCameraHeight(2);
+			menu.setCameraDistance(10);
 
 			document.addEventListener('keydown', function(e) {
 			  if(e.keyCode == 37) {

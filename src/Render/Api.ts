@@ -36,8 +36,8 @@ class Api {
     try {
       const model = await this.loader.load(path)
       return this.render.addModel(model.scene)
-    } catch {
-      console.log(`Error loading model: ${path}`)
+    } catch (err) {
+      console.log(`Error loading model ${path}: ${err}`)
       return null
     }
   }
