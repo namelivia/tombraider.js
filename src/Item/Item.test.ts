@@ -5,9 +5,10 @@ describe('Item', () => {
     const item = new Item(
       1,
       'testName',
+      'testModel',
       'testAction',
       'testParams',
-      'testModel',
+      1,
     )
     expect(item.getName()).toEqual('testName')
   })
@@ -16,9 +17,10 @@ describe('Item', () => {
     const item = new Item(
       1,
       'testName',
+      'testModel',
       'testAction',
       'testParams',
-      'testModel',
+      1,
     )
     expect(item.serialize()).toEqual({
       //index: 1, TODO

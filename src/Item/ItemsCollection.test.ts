@@ -14,9 +14,10 @@ describe('ItemsCollection', () => {
     const item = new Item(
       1,
       'testName',
+      'testModel',
       'testAction',
       'testParams',
-      'testModel',
+      1,
     )
     collection.add(item)
     expect(collection.count()).toEqual(1)
@@ -30,9 +31,10 @@ describe('ItemsCollection', () => {
     const item = new Item(
       1,
       'testName',
+      'testModel',
       'testAction',
       'testParams',
-      'testModel',
+      1,
     )
     collection.add(item)
     expect(collection.serialize()).toEqual([
