@@ -1,8 +1,15 @@
 module.exports = {
-  moduleFileExtensions: ["ts", "js"],
+  verbose: true,
+  moduleFileExtensions: ['ts', 'js'],
   collectCoverage: true,
-  collectCoverageFrom: ["src/**/*.{ts|js}"],
+  collectCoverageFrom: ['src/**/*.ts', 'src/**/*.js'],
+  coverageThreshold: {
+    global: {
+      lines: 90,
+      statements: 90,
+    },
+  },
   transform: {
-    "^.+\\.(js|ts|tsx)$": "esbuild-jest"
-  }
-};
+    '^.+\\.(js|ts|tsx)$': 'esbuild-jest',
+  },
+}
