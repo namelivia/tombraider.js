@@ -22,18 +22,18 @@ After doing that you can include tombraider.js in your webpage.
 Then the following code will initate a new 3D Menu inside a div container with the attribute ```id``` set to containerId: 
 
 ```javascript
-var newMenu = tombraidermenu("containerId");
+var menu = TombRaiderMenu("your-container-id");
 ```
 
 Now that the menu has been initialized you can call methods on it to add objects, define it's
 settings or bind functions. For example:
 
 ```javascript
-newMenu.setRadius(3000)
-newMenu.setCameraDistance(4000)
-newMenu.setCameraHeight(5000)
-newMenu.addModel('New Model','models/newModel.gltf','link','http://www.google.com')
-newMenu.animate()
+menu.setRadius(3000)
+menu.setCameraDistance(4000)
+menu.setCameraHeight(5000)
+menu.addModel('New Model','models/newModel.gltf','link','http://www.google.com')
+menu.animate()
 ```
 
 In the example above some general options are set, and a new object is inserted.
@@ -42,7 +42,7 @@ Alternatively, those paremeters could have been defined in a JSON string and loa
 ### Reference ###
 
 ```javascript
-__tombraidermenu(divId):__
+TombRaiderMenu("your-container-id")
 ```
 This is the constructor of the class, is used to initiate a new menu on the page placed inside the div defined by the id passed as a parameter (See Usage for an example).
 
