@@ -27,7 +27,7 @@
   "homepage": "https://github.com/namelivia/tombraider.js",
   "babel": {
     "presets": [
-        "@babel/preset-typescript"
+      "@babel/preset-typescript"
     ]
   },
   "dependencies": {
