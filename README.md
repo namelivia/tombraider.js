@@ -37,7 +37,7 @@ settings or bind functions. For example:
 newMenu.setRadius(3000);
 newMenu.setCameraDistance(4000);
 newMenu.setCameraHeight(5000);
-newMenu.addModel('New Model','models/newModel.json','link','http://www.google.com');
+newMenu.addModel('New Model','models/newModel.gltf','link','http://www.google.com');
 ```
 
 In the example above some general options are set, and a new object is inserted.
@@ -120,7 +120,7 @@ document.addEventListener("action", function(e) {
 
 The format of the JSON string in order to load an already configured and populated menu is as follows:
 ```javascript
-"{"objects":[{"name":"go to google","action":"link","params":"http://www.google.com","model":"models/chest/chest.json"},{"name":"go to facebook","action":"link","params":"http://www.facebook.com","model":"models/chest/chest.json"}],"distance":12000,"height":3000,"radius":6000}"
+"{"objects":[{"name":"go to google","action":"link","params":"http://www.google.com","model":"models/chest/chest.gltf"},{"name":"go to facebook","action":"link","params":"http://www.facebook.com","model":"models/chest/chest.gltf"}],"distance":12000,"height":3000,"radius":6000}"
 ```
 
 At root level there is an array called ```objects```, it contains a collection of JSON objects with four defined parameters, ```name``` which is the object's name, ```model``` that is the path where the browser
