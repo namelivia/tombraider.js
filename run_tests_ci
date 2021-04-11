@@ -1,0 +1,4 @@
+#!/bin/bash
+npm run typecheck
+npm run test
+npm run codecov -- --commit=$1 -t $2

@@ -7,6 +7,7 @@
     "test": "jest",
     "build": "node build.js",
     "prettier": "prettier",
+    "codecov": "codecov",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "repository": {
@@ -37,6 +38,7 @@
     "@babel/preset-typescript": "^7.13.0",
     "@types/jest": "^26.0.22",
     "@types/three": "^0.126.2",
+    "codecov": "^3.8.1",
     "esbuild": "^0.11.6",
     "esbuild-jest": "^0.5.0",
     "eslint": "^7.23.0",
