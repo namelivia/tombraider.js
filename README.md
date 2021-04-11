@@ -9,18 +9,13 @@ tombraider.js
 __tombraider.js__ is a Javascript library for generating 3D spinning menus like the ones in the early Tomb Raider
 games. It is built on top of three.js. You can see it in action in [this demos page](http://tombraiderjs.namelivia.com#demo).
 
-### Dependencies ###
-
-This library depends on three.js you can [get the minified version here](http://threejs.org/build/three.min.js).
-
 ### Usage ###
 
-Once you have downloaded three.js from the previous link you have to also [get the latest minified version of tombraider.js here](http://tombraiderjs.namelivia.com/tombraider.js-v0.0.1.min.js).
+[Get the latest minified version of tombraider.js here](http://tombraiderjs.namelivia.com/tombraider.js-v0.0.1.min.js).
 
-After doing that you can include three.js and then tombraider.js in your webpage.
+After doing that you can include tombraider.js in your webpage.
 
 ```html
-<script src="js/three.min.js"></script>
 <script src="js/tombraider.js-v0.0.1.min.js"></script>
 ```
 
@@ -34,64 +29,96 @@ Now that the menu has been initialized you can call methods on it to add objects
 settings or bind functions. For example:
 
 ```javascript
-newMenu.setRadius(3000);
-newMenu.setCameraDistance(4000);
-newMenu.setCameraHeight(5000);
-newMenu.addModel('New Model','models/newModel.gltf','link','http://www.google.com');
+newMenu.setRadius(3000)
+newMenu.setCameraDistance(4000)
+newMenu.setCameraHeight(5000)
+newMenu.addModel('New Model','models/newModel.gltf','link','http://www.google.com')
+newMenu.animate()
 ```
 
 In the example above some general options are set, and a new object is inserted.
-Alternatively, those paremeters could have been defined in a JSON string and loaded using the
-```setConfig``` function. For more information check the following section.
+Alternatively, those paremeters could have been defined in a JSON string and loaded using the `setConfig` function. For more information check the following section.
 
 ### Reference ###
 
+```javascript
 __tombraidermenu(divId):__
+```
 This is the constructor of the class, is used to initiate a new menu on the page placed inside the div defined by the id passed as a parameter (See Usage for an example).
 
-__addModel(name,model,action,params):__
+```javascript
+addModel(name,model,action,params)
+```
 Adds a new object to the scene, the objects have a name, a model url pointing to a JSON 3D model object, an action keyword, and a parameter for using with that action.
 
-__deleteSelected():__
+```javascript
+deleteSelected()
+```
 Deletes the currently selected object from the scene.
 
-__newScene():__
+```javascript
+newScene()
+```
 Clears the scene and reset the config values to their defaults.
 
-__moveLeft():__
+```javascript
+moveLeft()
+```
 Selects the previous object rotating the menu to the left.
 
-__moveRight():__
+```javascript
+moveRight()
+```
 Selects the next object rotating the menu to the right.
 
-__action():__
+```javascript
+action()
+```
 Triggers the action associated to the currently selected object (see Action keywords).
 
-__getSelectedName():__
+```javascript
+getSelectedName()
+```
 Returns the name of the object currently selected.
 
-__getRaduis():__
+```javascript
+getRadius()
+```
 Returns the radius of the circle where the objects are placed in 3D space.
 
-__getCameraDistance():__
+```javascript
+getCameraDistance()
+```
 Returns the distance of the camera.
 
-__getCameraHeight():__
+```javascript
+getCameraHeight()
+```
 Returns the height of the camera.
 
-__getConfig():__
+```javascript
+getConfig()
+```
 Returns the current configuration of the menu as a valid JSON string (see JSON config structure).
 
-__setRadius(value):__
+```javascript
+setRadius(value)
+```
 Sets the radius of the circle where the objects are placed in 3D space.
 
-__setCameraHeight(value):__
+```javascript
+setCameraHeight(value)
+```
 Sets the height of the camera.
 
-__setCameraDistance(value):__
+```javascript
+setCameraDistance(value)
+```
 Sets the distance of the camera.
 
-__setConfig(config):__
+```javascript
+setConfig(config)
+```
 Clears the current scene and sets a new menu defined by the JSON string passed as parameter (see JSON config structure).
 
 #### Action keywords
