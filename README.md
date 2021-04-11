@@ -29,9 +29,9 @@ Now that the menu has been initialized you can call methods on it to add objects
 settings or bind functions. For example:
 
 ```javascript
-menu.setRadius(3000)
-menu.setCameraDistance(4000)
-menu.setCameraHeight(5000)
+menu.setRadius(5)
+menu.setCameraDistance(10)
+menu.setCameraHeight(2)
 menu.addModel('New Model','models/newModel.gltf','link','http://www.google.com')
 menu.animate()
 ```
