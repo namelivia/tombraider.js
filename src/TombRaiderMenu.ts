@@ -26,11 +26,6 @@ class TombRaiderMenu {
     }
   }
 
-  //TODO: This will probably go away
-  goToLink = (url: string) => {
-    window.location.href = url
-  }
-
   moveLeft = () => {
     this.item.selectNext()
   }

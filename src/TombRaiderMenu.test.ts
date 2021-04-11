@@ -1,6 +1,16 @@
 import { default as TombRaiderMenu } from './TombRaiderMenu'
 import * as THREE from 'three'
-jest.mock('three')
+jest.mock('three', () => ({
+  Scene: jest.fn(() => ({
+    add: jest.fn(),
+  })),
+  PerspectiveCamera: jest.fn(),
+  AmbientLight: jest.fn(),
+  DirectionalLight: jest.fn(),
+  WebGLRenderer: jest.fn(() => ({
+    setSize: jest.fn(),
+  })),
+}))
 
 describe('TombRaiderMenu', () => {
   test('Test menu', () => {

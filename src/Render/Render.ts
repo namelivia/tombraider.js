@@ -21,8 +21,7 @@ class Render {
   resize = (width: number, height: number) => {
     //TODO: Can I just modify the camera size? It seems I cannot
     this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 100000)
-    //TODO: This is being hard to mock
-    //this.renderer.setSize(width, height)
+    this.renderer.setSize(width, height)
   }
 
   getRenderer = (): THREE.WebGLRenderer => this.renderer

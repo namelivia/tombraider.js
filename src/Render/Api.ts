@@ -12,8 +12,10 @@ class Api {
 
   attachRenderer = (container: HTMLElement) => {
     this.render.resize(container.offsetWidth, container.offsetHeight)
-    //TODO: This is being hard to mock
-    //container.appendChild(this.render.getRenderer().domElement)
+    let renderer = this.render.getRenderer()
+    if (renderer.domElement) {
+      container.appendChild(renderer.domElement)
+    }
   }
 
   update = () => {
