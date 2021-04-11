@@ -155,12 +155,6 @@ can find the JSON 3D model for the object, ```action``` is the keyword that defi
 parameters pased to the corresponding action function. In this case the keyword ```link``` will make the browser go to the URL address defined by the ```params``` attribute. 
 Also at root level are defined the three general settings for the menu, ```distance``` that sets the distance of the camera, ```height``` that will set the height of the camera and finally ```radius``` which will define the radius of the circle where the objects are placed in 3D space.
 
-### Testing and building from source ###
-
-Make sure you have [grunt](http://gruntjs.com/) and [node](http://nodejs.org/download/) installed.
-To install the development dependencies run ```npm install```.
-To execute the tests run ```grunt test``` in the root directory, to build it run ```grunt``` in the root directory.
-
 ### Changelog ###
 
 [02-06-2015] 0.0.1: First alpha version.
