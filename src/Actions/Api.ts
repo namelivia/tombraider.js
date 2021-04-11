@@ -15,7 +15,7 @@ class Api {
   }
 
   goToLink = (href: string) => {
-    window.location.href = href
+    window.location.assign(href)
   }
 }
 
