@@ -102,7 +102,7 @@ Currently there are the following actions available:
 
 ```alert```: Displays a Javascript alert defined by ```params```.
 
-``````: An empty string means "Don't do anything" but it does not rise an error.
+An empty string means "Don't do anything" but it does not rise an error.
 
 Any other words as an action keyword will be reported as an error in the browser console.
 
@@ -137,6 +137,8 @@ To execute the tests run ```grunt test``` in the root directory, to build it run
 ### Changelog ###
 
 [02-06-2015] 0.0.1: First alpha version.
+
+[11-04-2021] 0.0.2: Complete code revamp.
 
 ### ToDo and ideas ###
 
