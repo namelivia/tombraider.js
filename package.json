@@ -1,6 +1,6 @@
 {
   "name": "tombraider.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Javascript library for generating 3D menus like the ones in the early Tomb Raider games.",
   "main": "src/tombraidermenu.js",
   "scripts": {
