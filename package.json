@@ -35,7 +35,7 @@
     "three": "^0.135.0"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.5",
     "@types/jest": "^27.0.3",
     "@types/three": "^0.135.0",
     "codecov": "^3.8.3",
