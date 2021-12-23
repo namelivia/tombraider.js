@@ -3,6 +3,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'js'],
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.ts', 'src/**/*.js'],
+  testEnvironment: "jsdom",
   coverageThreshold: {
     global: {
       lines: 75,
