@@ -32,7 +32,7 @@
     ]
   },
   "dependencies": {
-    "three": "^0.140.2"
+    "three": "^0.141.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.17.12",
