@@ -32,12 +32,12 @@
     ]
   },
   "dependencies": {
-    "three": "^0.157.0"
+    "three": "^0.158.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.23.2",
     "@types/jest": "^29.5.6",
-    "@types/three": "^0.157.2",
+    "@types/three": "^0.158.0",
     "codecov": "^3.8.3",
     "esbuild": "^0.19.5",
     "esbuild-jest": "^0.5.0",
