@@ -39,7 +39,7 @@
     "@types/jest": "^29.5.14",
     "@types/three": "^0.171.0",
     "codecov": "^3.8.3",
-    "esbuild": "^0.24.0",
+    "esbuild": "^0.24.2",
     "esbuild-jest": "^0.5.0",
     "eslint": "^9.17.0",
     "eslint-config-prettier": "^9.1.0",
